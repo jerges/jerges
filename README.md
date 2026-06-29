@@ -1,3 +1,5 @@
+<img src="portfolio/assets/logo-mark.svg" width="56" alt="Jerges Bello" />
+
 # Jerges Bello
 
 I build apps. Backend systems, AI-powered platforms, and automation tools — from idea to production.
