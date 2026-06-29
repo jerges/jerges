@@ -28,7 +28,14 @@
       </svg>
       <span class="nav-name">Jerges Bello</span>
     </a>
-    <a href="mailto:jergesbello@gmail.com" class="nav-cta">Get in touch</a>
+
+    <div class="nav-right">
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <a href="mailto:jergesbello@gmail.com" class="nav-cta" data-i18n="nav.cta">Get in touch</a>
+    </div>
   </nav>
 
   <main>
@@ -50,22 +57,22 @@
       </div>
       <div class="available-badge">
         <span class="dot"></span>
-        Available for projects
+        <span data-i18n="hero.badge">Available for projects</span>
       </div>
       <h1>
-        I build<br />
-        <span class="gradient-text">apps.</span>
+        <span data-i18n="hero.h1a">I build</span><br />
+        <span class="gradient-text" data-i18n="hero.h1b">apps.</span>
       </h1>
-      <p class="hero-sub">
+      <p class="hero-sub" data-i18n="hero.sub">
         Backend systems, AI-powered platforms and automation tools —
         from idea to production.
       </p>
-      <a href="#work" class="scroll-cta">See my work ↓</a>
+      <a href="#work" class="scroll-cta" data-i18n="hero.scroll">See my work ↓</a>
     </section>
 
     <!-- WORK -->
     <section id="work">
-      <p class="section-label">Selected work</p>
+      <p class="section-label" data-i18n="work.label">Selected work</p>
       <div class="project-grid">
 
         <article class="project project--roboteam">
@@ -75,7 +82,7 @@
               <h2>Roboteam</h2>
               <a href="https://www.roboteam.es" target="_blank" rel="noopener" class="project-url">roboteam.es ↗</a>
             </div>
-            <p>
+            <p data-i18n="roboteam.desc">
               Your team of AI agents working for you 24/7. 9 specialized agents —
               from secretary to trader — automating your business via
               Telegram, WhatsApp and Slack.
@@ -97,7 +104,7 @@
               <h2>Dentis</h2>
               <span class="badge">SaaS</span>
             </div>
-            <p>
+            <p data-i18n="dentis.desc">
               Full dental clinic management platform — scheduling, digital clinical
               records with interactive odontogram, billing and an AI clinical
               assistant with RAG powered by Amazon Bedrock.
@@ -117,18 +124,21 @@
 
     <!-- ABOUT -->
     <section id="about">
-      <p class="section-label">About</p>
+      <p class="section-label" data-i18n="about.label">About</p>
       <div class="about-grid">
         <div class="about-left">
-          <h3>15+ years<br />shipping products.</h3>
+          <h3>
+            <span data-i18n="about.h1">15+ years</span><br />
+            <span data-i18n="about.h2">shipping products.</span>
+          </h3>
         </div>
         <div class="about-right">
-          <p>
+          <p data-i18n="about.p1">
             I've led engineering teams at El Corte Inglés, JumboTours and Barceló,
             designing microservice architectures, event-driven systems with Kafka and
             cloud infrastructure on AWS and Azure.
           </p>
-          <p>
+          <p data-i18n="about.p2">
             Now I apply that same depth to building my own products and
             solving real problems for small businesses and entrepreneurs.
           </p>
@@ -138,58 +148,36 @@
 
     <!-- STACK -->
     <section id="stack">
-      <p class="section-label">Stack</p>
+      <p class="section-label" data-i18n="stack.label">Stack</p>
       <div class="stack-grid">
-        <div class="stack-item">
-          <span class="stack-icon">☕</span>
-          <span>Java · Spring Boot</span>
-        </div>
-        <div class="stack-item">
-          <span class="stack-icon">⚡</span>
-          <span>TypeScript · Node.js</span>
-        </div>
-        <div class="stack-item">
-          <span class="stack-icon">📨</span>
-          <span>Apache Kafka</span>
-        </div>
-        <div class="stack-item">
-          <span class="stack-icon">🐳</span>
-          <span>Docker · Kubernetes</span>
-        </div>
-        <div class="stack-item">
-          <span class="stack-icon">☁️</span>
-          <span>AWS · Azure</span>
-        </div>
-        <div class="stack-item">
-          <span class="stack-icon">🤖</span>
-          <span>Amazon Bedrock · Spring AI</span>
-        </div>
-        <div class="stack-item">
-          <span class="stack-icon">🅰</span>
-          <span>Angular</span>
-        </div>
-        <div class="stack-item">
-          <span class="stack-icon">🗄</span>
-          <span>PostgreSQL · Oracle</span>
-        </div>
+        <div class="stack-item"><span class="stack-icon">☕</span><span>Java · Spring Boot</span></div>
+        <div class="stack-item"><span class="stack-icon">⚡</span><span>TypeScript · Node.js</span></div>
+        <div class="stack-item"><span class="stack-icon">📨</span><span>Apache Kafka</span></div>
+        <div class="stack-item"><span class="stack-icon">🐳</span><span>Docker · Kubernetes</span></div>
+        <div class="stack-item"><span class="stack-icon">☁️</span><span>AWS · Azure</span></div>
+        <div class="stack-item"><span class="stack-icon">🤖</span><span>Amazon Bedrock · Spring AI</span></div>
+        <div class="stack-item"><span class="stack-icon">🅰</span><span>Angular</span></div>
+        <div class="stack-item"><span class="stack-icon">🗄</span><span>PostgreSQL · Oracle</span></div>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact">
       <div class="contact-inner">
-        <h3>Have a project<br />in mind?</h3>
-        <p>Let's build something together.</p>
-        <a href="mailto:jergesbello@gmail.com" class="cta-button">
-          jergesbello@gmail.com
-        </a>
+        <p class="section-label" data-i18n="contact.label">Let's build something</p>
+        <h3>
+          <span data-i18n="contact.h1">Have a project</span><br />
+          <span data-i18n="contact.h2">in mind?</span>
+        </h3>
+        <p data-i18n="contact.sub">Let's build something together.</p>
+        <a href="mailto:jergesbello@gmail.com" class="cta-button">jergesbello@gmail.com</a>
       </div>
     </section>
 
   </main>
 
   <footer>
-    <span>© 2026 Jerges Bello</span>
+    <span data-i18n="footer.copy">© 2026 Jerges Bello</span>
     <div class="footer-links">
       <a href="https://github.com/jerges" target="_blank" rel="noopener">GitHub</a>
       <a href="http://www.jabex.com.es" target="_blank" rel="noopener">jabex.com.es</a>
