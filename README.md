@@ -1,4 +1,4 @@
-<img src="portfolio/assets/logo-mark.svg" width="56" alt="Jerges Bello" />
+<img src="docs/assets/logo-mark.svg" width="56" alt="Jerges Bello" />
 
 # Jerges Bello
 
