@@ -5,103 +5,170 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jerges Bello — I build apps</title>
   <meta name="description" content="I build backend systems, AI-powered platforms and automation tools — from idea to production." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+
+  <nav>
+    <span class="nav-name">Jerges Bello</span>
+    <a href="mailto:jergesbello@gmail.com" class="nav-cta">Get in touch</a>
+  </nav>
+
   <main>
 
-    <header>
-      <h1>Jerges Bello</h1>
-      <p class="tagline">I build apps.</p>
-      <p class="sub">Backend systems, AI-powered platforms and automation tools — from idea to production.</p>
-    </header>
+    <!-- HERO -->
+    <section id="hero">
+      <div class="available-badge">
+        <span class="dot"></span>
+        Available for projects
+      </div>
+      <h1>
+        I build<br />
+        <span class="gradient-text">apps.</span>
+      </h1>
+      <p class="hero-sub">
+        Backend systems, AI-powered platforms and automation tools —
+        from idea to production.
+      </p>
+      <a href="#work" class="scroll-cta">See my work ↓</a>
+    </section>
 
-    <section id="projects">
-      <h2>Work</h2>
-
+    <!-- WORK -->
+    <section id="work">
+      <p class="section-label">Selected work</p>
       <div class="project-grid">
 
-        <article class="project">
-          <div class="project-header">
-            <h3>Roboteam</h3>
-            <a href="https://www.roboteam.es" target="_blank" rel="noopener" class="project-link">roboteam.es ↗</a>
+        <article class="project project--roboteam">
+          <div class="project-accent"></div>
+          <div class="project-body">
+            <div class="project-top">
+              <h2>Roboteam</h2>
+              <a href="https://www.roboteam.es" target="_blank" rel="noopener" class="project-url">roboteam.es ↗</a>
+            </div>
+            <p>
+              Your team of AI agents working for you 24/7. 9 specialized agents —
+              from secretary to trader — automating your business via
+              Telegram, WhatsApp and Slack.
+            </p>
+            <ul class="tags">
+              <li>AI Agents</li>
+              <li>TypeScript</li>
+              <li>Telegram</li>
+              <li>WhatsApp</li>
+              <li>Slack</li>
+            </ul>
           </div>
-          <p class="project-desc">
-            Your team of AI agents working for you. 9 specialized agents — from secretary to trader —
-            ready to automate your business via Telegram, WhatsApp and Slack.
-          </p>
-          <ul class="tags">
-            <li>AI Agents</li>
-            <li>TypeScript</li>
-            <li>Telegram</li>
-            <li>WhatsApp</li>
-            <li>Slack</li>
-          </ul>
         </article>
 
-        <article class="project">
-          <div class="project-header">
-            <h3>Dentis</h3>
-            <span class="project-badge">SaaS</span>
+        <article class="project project--dentis">
+          <div class="project-accent"></div>
+          <div class="project-body">
+            <div class="project-top">
+              <h2>Dentis</h2>
+              <span class="badge">SaaS</span>
+            </div>
+            <p>
+              Full dental clinic management platform — scheduling, digital clinical
+              records with interactive odontogram, billing and an AI clinical
+              assistant with RAG powered by Amazon Bedrock.
+            </p>
+            <ul class="tags">
+              <li>Java · Spring Boot</li>
+              <li>Angular 18</li>
+              <li>Amazon Bedrock</li>
+              <li>pgvector</li>
+              <li>AWS</li>
+            </ul>
           </div>
-          <p class="project-desc">
-            Full dental clinic management platform — scheduling, digital clinical records with interactive odontogram,
-            billing, document storage and an AI clinical assistant with RAG over clinic-specific knowledge.
-          </p>
-          <ul class="tags">
-            <li>Java · Spring Boot</li>
-            <li>Angular</li>
-            <li>Amazon Bedrock</li>
-            <li>PostgreSQL + pgvector</li>
-            <li>AWS</li>
-          </ul>
         </article>
 
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about">
-      <h2>About</h2>
-      <p>
-        15+ years building backend systems and distributed architectures. I've led technical teams at
-        El Corte Inglés, JumboTours and Barceló — now I apply that same depth to building my own products
-        and solving real problems for small businesses and entrepreneurs.
-      </p>
-      <p>
-        I work across the full stack but live on the backend: Java, Spring Boot, Kafka, microservices,
-        event-driven systems, cloud infrastructure (AWS / Azure).
-      </p>
+      <p class="section-label">About</p>
+      <div class="about-grid">
+        <div class="about-left">
+          <h3>15+ years<br />shipping products.</h3>
+        </div>
+        <div class="about-right">
+          <p>
+            I've led engineering teams at El Corte Inglés, JumboTours and Barceló,
+            designing microservice architectures, event-driven systems with Kafka and
+            cloud infrastructure on AWS and Azure.
+          </p>
+          <p>
+            Now I apply that same depth to building my own products and
+            solving real problems for small businesses and entrepreneurs.
+          </p>
+        </div>
+      </div>
     </section>
 
+    <!-- STACK -->
     <section id="stack">
-      <h2>Stack</h2>
-      <ul class="tags">
-        <li>Java · Spring Boot</li>
-        <li>TypeScript · Node.js</li>
-        <li>Apache Kafka</li>
-        <li>Docker · Kubernetes</li>
-        <li>AWS · Azure</li>
-        <li>PostgreSQL · Oracle</li>
-        <li>Angular</li>
-        <li>Amazon Bedrock · Spring AI</li>
-      </ul>
+      <p class="section-label">Stack</p>
+      <div class="stack-grid">
+        <div class="stack-item">
+          <span class="stack-icon">☕</span>
+          <span>Java · Spring Boot</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-icon">⚡</span>
+          <span>TypeScript · Node.js</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-icon">📨</span>
+          <span>Apache Kafka</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-icon">🐳</span>
+          <span>Docker · Kubernetes</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-icon">☁️</span>
+          <span>AWS · Azure</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-icon">🤖</span>
+          <span>Amazon Bedrock · Spring AI</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-icon">🅰</span>
+          <span>Angular</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-icon">🗄</span>
+          <span>PostgreSQL · Oracle</span>
+        </div>
+      </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact">
-      <h2>Let's build something</h2>
-      <p>Have a project in mind? I'm available for new work.</p>
-      <a href="mailto:jergesbello@gmail.com" class="cta">jergesbello@gmail.com</a>
+      <div class="contact-inner">
+        <h3>Have a project<br />in mind?</h3>
+        <p>Let's build something together.</p>
+        <a href="mailto:jergesbello@gmail.com" class="cta-button">
+          jergesbello@gmail.com
+        </a>
+      </div>
     </section>
-
-    <footer>
-      <a href="https://github.com/jerges" target="_blank" rel="noopener">GitHub</a>
-      <span>·</span>
-      <a href="http://www.jabex.com.es" target="_blank" rel="noopener">jabex.com.es</a>
-      <span>·</span>
-      <span>Spain</span>
-    </footer>
 
   </main>
+
+  <footer>
+    <span>© 2026 Jerges Bello</span>
+    <div class="footer-links">
+      <a href="https://github.com/jerges" target="_blank" rel="noopener">GitHub</a>
+      <a href="http://www.jabex.com.es" target="_blank" rel="noopener">jabex.com.es</a>
+    </div>
+  </footer>
+
   <script src="js/main.js"></script>
 </body>
 </html>
