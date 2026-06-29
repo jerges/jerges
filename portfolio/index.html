@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jerges Bello — Software Architect & Technical Lead</title>
-  <meta name="description" content="Software Architect and Technical Lead with 15+ years of experience in Java, Spring Boot, Kafka, microservices, and cloud infrastructure." />
+  <title>Jerges Bello — I build apps</title>
+  <meta name="description" content="I build backend systems, AI-powered platforms and automation tools — from idea to production." />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -12,146 +12,93 @@
 
     <header>
       <h1>Jerges Bello</h1>
-      <p class="tagline">Software Architect & Technical Lead · Islas Baleares, Spain</p>
+      <p class="tagline">I build apps.</p>
+      <p class="sub">Backend systems, AI-powered platforms and automation tools — from idea to production.</p>
     </header>
 
-    <section id="about">
-      <p>
-        15+ years designing and leading backend systems, distributed architectures, and engineering teams.
-        Currently architecting the new e-commerce platform for <strong>El Corte Inglés</strong>, built on
-        microservices, CQRS, and Kafka event streaming.
-      </p>
-      <p>
-        I've worked across tourism, banking, e-commerce, and telecoms — always on the technical side:
-        defining architecture, setting standards, and shipping.
-      </p>
+    <section id="projects">
+      <h2>Work</h2>
+
+      <div class="project-grid">
+
+        <article class="project">
+          <div class="project-header">
+            <h3>Roboteam</h3>
+            <a href="https://www.roboteam.es" target="_blank" rel="noopener" class="project-link">roboteam.es ↗</a>
+          </div>
+          <p class="project-desc">
+            Your team of AI agents working for you. 9 specialized agents — from secretary to trader —
+            ready to automate your business via Telegram, WhatsApp and Slack.
+          </p>
+          <ul class="tags">
+            <li>AI Agents</li>
+            <li>TypeScript</li>
+            <li>Telegram</li>
+            <li>WhatsApp</li>
+            <li>Slack</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <div class="project-header">
+            <h3>Dentis</h3>
+            <span class="project-badge">SaaS</span>
+          </div>
+          <p class="project-desc">
+            Full dental clinic management platform — scheduling, digital clinical records with interactive odontogram,
+            billing, document storage and an AI clinical assistant with RAG over clinic-specific knowledge.
+          </p>
+          <ul class="tags">
+            <li>Java · Spring Boot</li>
+            <li>Angular</li>
+            <li>Amazon Bedrock</li>
+            <li>PostgreSQL + pgvector</li>
+            <li>AWS</li>
+          </ul>
+        </article>
+
+      </div>
     </section>
 
-    <section id="experience">
-      <h2>Experience</h2>
-      <ul class="timeline">
-
-        <li>
-          <span class="period">2020 — present</span>
-          <div>
-            <strong>Architect & Technical Lead</strong>
-            <span class="company">ATSistemas @ El Corte Inglés</span>
-            <p>
-              Technical owner of PDP and PLP domains in a new e-commerce platform replacing a legacy monolith.
-              Architecture: microservices + CQRS + Kafka Streams (KStreams) for real-time product data.
-            </p>
-          </div>
-        </li>
-
-        <li>
-          <span class="period">2020</span>
-          <div>
-            <strong>Architect & Technical Lead</strong>
-            <span class="company">JumboTours</span>
-            <p>
-              Designed JIP (Jumbo Integration Platform) — a microservices + Kafka platform for booking management across the company.
-            </p>
-          </div>
-        </li>
-
-        <li>
-          <span class="period">2013 — 2020</span>
-          <div>
-            <strong>Architect & Senior Java Engineer</strong>
-            <span class="company">Concatel Vanture Team</span>
-            <p>
-              Tech Lead on JIPADM (JumboTours) — defined architecture with JHipster, set up CI/CD with Jenkins, drove TDD and DDD adoption.
-              Previously Senior Engineer at Ávoris (B the Travel Brand / Barceló): payment engines, SOA/REST integrations, card management systems.
-            </p>
-          </div>
-        </li>
-
-        <li>
-          <span class="period">2010 — 2011</span>
-          <div>
-            <strong>Construction Architect</strong>
-            <span class="company">Banesco Banco Universal</span>
-            <p>
-              Java / .NET development on banking systems. IBM WebSphere, DB2. Managed environment promotions and version control migrations (CVS → ClearCase).
-            </p>
-          </div>
-        </li>
-
-        <li>
-          <span class="period">2008 — 2010</span>
-          <div>
-            <strong>Java Consultant</strong>
-            <span class="company">TCS — Technology Consulting Solution</span>
-            <p>
-              Java development on Movilnet and CANTV platforms. Real-time billing services (RTB) for BlackBerry using WebServices, Oracle PL/SQL, and WSDL.
-            </p>
-          </div>
-        </li>
-
-      </ul>
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        15+ years building backend systems and distributed architectures. I've led technical teams at
+        El Corte Inglés, JumboTours and Barceló — now I apply that same depth to building my own products
+        and solving real problems for small businesses and entrepreneurs.
+      </p>
+      <p>
+        I work across the full stack but live on the backend: Java, Spring Boot, Kafka, microservices,
+        event-driven systems, cloud infrastructure (AWS / Azure).
+      </p>
     </section>
 
     <section id="stack">
       <h2>Stack</h2>
-      <div class="stack-groups">
-        <div>
-          <h3>Backend</h3>
-          <ul class="tags">
-            <li>Java</li>
-            <li>Spring Boot</li>
-            <li>Spring Security</li>
-            <li>J2EE</li>
-            <li>JHipster</li>
-            <li>Node.js</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Messaging & Data</h3>
-          <ul class="tags">
-            <li>Apache Kafka</li>
-            <li>Kafka Streams</li>
-            <li>REST / SOA</li>
-            <li>PostgreSQL</li>
-            <li>Oracle</li>
-            <li>MySQL</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Infrastructure</h3>
-          <ul class="tags">
-            <li>Docker</li>
-            <li>Kubernetes</li>
-            <li>AWS</li>
-            <li>Azure</li>
-            <li>Jenkins</li>
-            <li>Git</li>
-            <li>Maven</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Patterns</h3>
-          <ul class="tags">
-            <li>Microservices</li>
-            <li>CQRS</li>
-            <li>Event-driven</li>
-            <li>TDD</li>
-            <li>DDD</li>
-          </ul>
-        </div>
-      </div>
+      <ul class="tags">
+        <li>Java · Spring Boot</li>
+        <li>TypeScript · Node.js</li>
+        <li>Apache Kafka</li>
+        <li>Docker · Kubernetes</li>
+        <li>AWS · Azure</li>
+        <li>PostgreSQL · Oracle</li>
+        <li>Angular</li>
+        <li>Amazon Bedrock · Spring AI</li>
+      </ul>
     </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <p class="placeholder">Coming soon.</p>
+    <section id="contact">
+      <h2>Let's build something</h2>
+      <p>Have a project in mind? I'm available for new work.</p>
+      <a href="mailto:jergesbello@gmail.com" class="cta">jergesbello@gmail.com</a>
     </section>
 
     <footer>
-      <a href="http://www.jabex.com.es" target="_blank" rel="noopener">jabex.com.es</a>
-      <span>·</span>
       <a href="https://github.com/jerges" target="_blank" rel="noopener">GitHub</a>
       <span>·</span>
-      <a href="mailto:jergesbello@gmail.com">jergesbello@gmail.com</a>
+      <a href="http://www.jabex.com.es" target="_blank" rel="noopener">jabex.com.es</a>
+      <span>·</span>
+      <span>Spain</span>
     </footer>
 
   </main>
