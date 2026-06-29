@@ -2,8 +2,8 @@ const translations = {
   en: {
     'nav.cta':        'Get in touch',
     'hero.badge':     'Available for projects',
-    'hero.h1a':       'I build',
-    'hero.h1b':       'apps.',
+    'hero.h1a':       'Your idea,',
+    'hero.h1b':       'in production.',
     'hero.sub':       'Backend systems, AI-powered platforms and automation tools — from idea to production.',
     'hero.scroll':    'See my work ↓',
     'work.label':     'Selected work',
@@ -24,8 +24,8 @@ const translations = {
   es: {
     'nav.cta':        'Hablemos',
     'hero.badge':     'Disponible para proyectos',
-    'hero.h1a':       'Creo',
-    'hero.h1b':       'apps.',
+    'hero.h1a':       'Tu idea,',
+    'hero.h1b':       'en producción.',
     'hero.sub':       'Sistemas backend, plataformas con IA y herramientas de automatización — de la idea a producción.',
     'hero.scroll':    'Ver mi trabajo ↓',
     'work.label':     'Proyectos',

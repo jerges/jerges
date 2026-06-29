@@ -2,7 +2,7 @@
 
 # Jerges Bello
 
-I build apps. Backend systems, AI-powered platforms, and automation tools — from idea to production.
+Your idea, in production. Backend systems, AI-powered platforms and automation tools.
 
 Based in Spain · Available for projects
 
