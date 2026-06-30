@@ -925,10 +925,11 @@
     html[data-theme="dark"] .icon-moon { display: block; }
 
     /* ── COMPANIES TICKER ───────────── */
-    #companies {
-      max-width: none;
+    /* section#companies beats section:not(#hero) at same specificity, wins by cascade order */
+    section#companies {
+      max-width: 100%;
       padding: 2.5rem 0 3.5rem;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .companies-header {
@@ -940,6 +941,8 @@
     .ticker-wrap {
       position: relative;
       overflow: hidden;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
     }
 
     .ticker-fade-l,
@@ -989,8 +992,17 @@
       box-shadow: 0 12px 30px rgba(0,0,0,.3);
     }
 
-    .co-mark {
+    .co-logo-wrap {
       width: 38px; height: 38px;
+      flex-shrink: 0;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .co-mark {
+      position: absolute;
+      inset: 0;
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -999,9 +1011,19 @@
       font-weight: 800;
       color: rgba(255,255,255,.95);
       letter-spacing: .04em;
-      flex-shrink: 0;
       text-align: center;
       line-height: 1;
+    }
+
+    .co-logo-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+      background: #fff;
+      padding: 5px;
     }
 
     .co-text { display: flex; flex-direction: column; gap: .2rem; }
@@ -1170,7 +1192,10 @@
 
           <!-- ITEMS SET 1 -->
           <div class="co-item">
-            <div class="co-mark" style="background: linear-gradient(135deg,#7c3aed,#6366f1)">KM</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#7c3aed,#6366f1)">KM</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/knowmadmood.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://knowmadmood.com&size=128" alt="Knowmadmood" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">Knowmadmood</span>
               <span class="co-sub">Tech Consulting · Madrid</span>
@@ -1179,16 +1204,22 @@
           </div>
 
           <div class="co-item">
-            <div class="co-mark" style="background: linear-gradient(135deg,#005a2e,#007a3e)">ECI</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#005a2e,#007a3e)">ECI</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/elcorteingles.es" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://elcorteingles.es&size=128" alt="El Corte Inglés" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">El Corte Inglés</span>
               <span class="co-sub">Retail · Madrid</span>
             </div>
-            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+            <span class="co-badge co-badge--current" data-i18n="companies.current">Current</span>
           </div>
 
           <div class="co-item">
-            <div class="co-mark" style="background: linear-gradient(135deg,#c2410c,#f97316)">AV</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#c2410c,#f97316)">AV</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/avoris.es" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://avoris.es&size=128" alt="Avoris" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">Avoris</span>
               <span class="co-sub" data-i18n="companies.avoris.sub">Travel · Barceloviajes</span>
@@ -1197,7 +1228,10 @@
           </div>
 
           <div class="co-item">
-            <div class="co-mark" style="background: linear-gradient(135deg,#0369a1,#0ea5e9)">JT</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#0369a1,#0ea5e9)">JT</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/jumbotours.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://jumbotours.com&size=128" alt="Jumbotours" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">Jumbotours</span>
               <span class="co-sub">Travel · Spain</span>
@@ -1206,7 +1240,10 @@
           </div>
 
           <div class="co-item">
-            <div class="co-mark" style="background: linear-gradient(135deg,#1e3a8a,#1d4ed8)">TCS</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8)">TCS</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/tcs.com.ve" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tcs.com.ve&size=128" alt="TCS" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">TCS</span>
               <span class="co-sub">IT Services · Venezuela</span>
@@ -1215,7 +1252,10 @@
           </div>
 
           <div class="co-item">
-            <div class="co-mark" style="background: linear-gradient(135deg,#b91c1c,#ef4444)">MOV</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#b91c1c,#ef4444)">MOV</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/movilnet.com.ve" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://movilnet.com.ve&size=128" alt="Movilnet" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">Movilnet</span>
               <span class="co-sub">Telecoms · Venezuela</span>
@@ -1224,7 +1264,10 @@
           </div>
 
           <div class="co-item">
-            <div class="co-mark" style="background: linear-gradient(135deg,#004085,#0056b3)">BAN</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#004085,#0056b3)">BAN</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/banesco.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://banesco.com&size=128" alt="Banesco" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">Banesco</span>
               <span class="co-sub">Banking · Venezuela</span>
@@ -1234,7 +1277,10 @@
 
           <!-- ITEMS SET 2 (seamless loop duplicate) -->
           <div class="co-item" aria-hidden="true">
-            <div class="co-mark" style="background: linear-gradient(135deg,#7c3aed,#6366f1)">KM</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#7c3aed,#6366f1)">KM</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/knowmadmood.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://knowmadmood.com&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">Knowmadmood</span>
               <span class="co-sub">Tech Consulting · Madrid</span>
@@ -1243,16 +1289,22 @@
           </div>
 
           <div class="co-item" aria-hidden="true">
-            <div class="co-mark" style="background: linear-gradient(135deg,#005a2e,#007a3e)">ECI</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#005a2e,#007a3e)">ECI</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/elcorteingles.es" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://elcorteingles.es&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">El Corte Inglés</span>
               <span class="co-sub">Retail · Madrid</span>
             </div>
-            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+            <span class="co-badge co-badge--current" data-i18n="companies.current">Current</span>
           </div>
 
           <div class="co-item" aria-hidden="true">
-            <div class="co-mark" style="background: linear-gradient(135deg,#c2410c,#f97316)">AV</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#c2410c,#f97316)">AV</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/avoris.es" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://avoris.es&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">Avoris</span>
               <span class="co-sub" data-i18n="companies.avoris.sub">Travel · Barceloviajes</span>
@@ -1261,7 +1313,10 @@
           </div>
 
           <div class="co-item" aria-hidden="true">
-            <div class="co-mark" style="background: linear-gradient(135deg,#0369a1,#0ea5e9)">JT</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#0369a1,#0ea5e9)">JT</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/jumbotours.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://jumbotours.com&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">Jumbotours</span>
               <span class="co-sub">Travel · Spain</span>
@@ -1270,7 +1325,10 @@
           </div>
 
           <div class="co-item" aria-hidden="true">
-            <div class="co-mark" style="background: linear-gradient(135deg,#1e3a8a,#1d4ed8)">TCS</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8)">TCS</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/tcs.com.ve" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tcs.com.ve&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">TCS</span>
               <span class="co-sub">IT Services · Venezuela</span>
@@ -1279,7 +1337,10 @@
           </div>
 
           <div class="co-item" aria-hidden="true">
-            <div class="co-mark" style="background: linear-gradient(135deg,#b91c1c,#ef4444)">MOV</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#b91c1c,#ef4444)">MOV</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/movilnet.com.ve" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://movilnet.com.ve&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">Movilnet</span>
               <span class="co-sub">Telecoms · Venezuela</span>
@@ -1288,7 +1349,10 @@
           </div>
 
           <div class="co-item" aria-hidden="true">
-            <div class="co-mark" style="background: linear-gradient(135deg,#004085,#0056b3)">BAN</div>
+            <div class="co-logo-wrap">
+              <div class="co-mark" style="background:linear-gradient(135deg,#004085,#0056b3)">BAN</div>
+              <img class="co-logo-img" src="https://logo.clearbit.com/banesco.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://banesco.com&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
+            </div>
             <div class="co-text">
               <span class="co-name">Banesco</span>
               <span class="co-sub">Banking · Venezuela</span>
@@ -1443,8 +1507,8 @@
       </div>
     </section>
 
-    <!-- BUSINESS CARD -->
-    <section id="card">
+    <!-- BUSINESS CARD (hidden — the web itself is the card) -->
+    <section id="card" style="display:none">
       <p class="section-label" data-i18n="card.label">Business card</p>
 
       <div class="card-showcase">
@@ -1851,6 +1915,16 @@
       document.querySelectorAll('section:not(#hero), .project, .stack-item')
         .forEach(el => { el.classList.add('fade-in'); observer.observe(el); });
     });
+
+    function coLogoError(img) {
+      const fallback = img.dataset.fallback;
+      if (fallback) {
+        img.src = fallback;
+        img.removeAttribute('data-fallback');
+      } else {
+        img.style.display = 'none';
+      }
+    }
   </script>
 </body>
 </html>
