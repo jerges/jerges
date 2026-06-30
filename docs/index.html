@@ -355,14 +355,9 @@
       background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
     }
 
-    .build-icon { font-size: 1.4rem; margin-bottom: 1rem; color: var(--muted); }
-
-    .ai-icon {
-      background: linear-gradient(135deg, #6366f1, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .build-icon { margin-bottom: 1.1rem; color: var(--muted); line-height: 0; }
+    .build-icon svg { width: 26px; height: 26px; display: block; }
+    .ai-icon { color: transparent; } /* gradient handled inside SVG */
 
     .build-card h3 {
       font-size: 1.05rem;
@@ -1032,7 +1027,7 @@
 
         <a class="build-card-link" href="#contact">
         <div class="build-card">
-          <div class="build-icon">◻</div>
+          <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3c-3 4-3 14 0 18"/><path d="M12 3c3 4 3 14 0 18"/><line x1="3.5" y1="9" x2="20.5" y2="9"/><line x1="3.5" y1="15" x2="20.5" y2="15"/></svg></div>
           <h3 data-i18n="builds.webs.title">Webs</h3>
           <p class="build-meta">Landing pages · Corporate · Product</p>
           <p data-i18n="builds.webs.desc">Landing pages that convert, corporate sites that build trust and product webs that sell — pixel-perfect design with blazing-fast performance.</p>
@@ -1041,7 +1036,7 @@
 
         <a class="build-card-link" href="#work">
         <div class="build-card">
-          <div class="build-icon">{ }</div>
+          <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 8h20"/><line x1="9" y1="21" x2="15" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7.5 12l-2 1.5 2 1.5"/><path d="M16.5 12l2 1.5-2 1.5"/></svg></div>
           <h3 data-i18n="builds.apps.title">Apps</h3>
           <p class="build-meta">E-commerce · Backoffice · APIs</p>
           <p data-i18n="builds.apps.desc">E-commerce platforms, backoffice tools and custom APIs — full-stack products engineered to scale from day one.</p>
@@ -1051,7 +1046,7 @@
         <a class="build-card-link" href="#work">
         <div class="build-card build-card--ai build-card--full">
           <div class="build-accent-bar"></div>
-          <div class="build-icon ai-icon">✦</div>
+          <div class="build-icon ai-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><linearGradient id="ai-g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#a855f7"/></linearGradient></defs><circle cx="12" cy="5" r="2" stroke="url(#ai-g)" fill="none"/><circle cx="5" cy="17" r="2" stroke="url(#ai-g)" fill="none"/><circle cx="19" cy="17" r="2" stroke="url(#ai-g)" fill="none"/><circle cx="12" cy="17" r="2" stroke="url(#ai-g)" fill="none"/><line x1="12" y1="7" x2="12" y2="15" stroke="url(#ai-g)"/><line x1="10.8" y1="6.4" x2="6.2" y2="15.3" stroke="url(#ai-g)"/><line x1="13.2" y1="6.4" x2="17.8" y2="15.3" stroke="url(#ai-g)"/><line x1="7" y1="17" x2="10" y2="17" stroke="url(#ai-g)"/><line x1="14" y1="17" x2="17" y2="17" stroke="url(#ai-g)"/></svg></div>
           <h3 data-i18n="builds.ai.title">AI Agents</h3>
           <p data-i18n="builds.ai.desc">9 specialized agents — from secretary to trader — running your business around the clock. They respond, execute and automate via Telegram, WhatsApp and Slack. You sleep, they work.</p>
           <span class="build-badge" data-i18n="builds.ai.badge">New</span>
@@ -1060,7 +1055,7 @@
 
         <a class="build-card-link" href="#contact">
         <div class="build-card">
-          <div class="build-icon">⚙</div>
+          <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg></div>
           <h3 data-i18n="builds.auto.title">Automation</h3>
           <p data-i18n="builds.auto.desc">Kafka-powered pipelines, webhook integrations and smart workflows that kill repetition — so your business runs itself.</p>
         </div>
@@ -1068,7 +1063,7 @@
 
         <a class="build-card-link" href="#contact">
         <div class="build-card">
-          <div class="build-icon">📱</div>
+          <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M5 6.5h14"/><path d="M5 17.5h14"/><line x1="9.5" y1="20" x2="14.5" y2="20"/><rect x="8" y="9.5" width="3" height="3" rx=".75"/><rect x="13" y="9.5" width="3" height="3" rx=".75"/><line x1="8" y1="14.5" x2="16" y2="14.5"/></svg></div>
           <h3 data-i18n="builds.mobile.title">Mobile</h3>
           <p class="build-meta">iOS · Android · React Native</p>
           <p data-i18n="builds.mobile.desc">Native-quality iOS and Android apps built with React Native — one codebase, two platforms, shipped fast. From idea to the App Store and Google Play.</p>
@@ -1077,7 +1072,7 @@
 
         <a class="build-card-link" href="#about">
         <div class="build-card">
-          <div class="build-icon">⬡</div>
+          <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12,2 14.6,3.5 14.6,6.5 12,8 9.4,6.5 9.4,3.5"/><polygon points="5.5,13.5 8.1,15 8.1,18 5.5,19.5 2.9,18 2.9,15"/><polygon points="18.5,13.5 21.1,15 21.1,18 18.5,19.5 15.9,18 15.9,15"/><line x1="12" y1="8" x2="5.5" y2="13.5"/><line x1="12" y1="8" x2="18.5" y2="13.5"/></svg></div>
           <h3 data-i18n="builds.arch.title">Architecture</h3>
           <p class="build-meta">Microservices · Event-driven · Cloud</p>
           <p data-i18n="builds.arch.desc">15+ years designing systems that don't fall over. CQRS, event sourcing, microservices — built for the teams at El Corte Inglés, Barceló and JumboTours, now available for you.</p>
