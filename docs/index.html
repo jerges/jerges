@@ -831,9 +831,31 @@
       footer { flex-direction: column; gap: 1rem; text-align: center; }
     }
 
+    /* ── THEME TOGGLE BUTTON ────────── */
+    .theme-btn {
+      background: none;
+      border: 1px solid var(--border-hover);
+      border-radius: 6px;
+      width: 34px; height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted-light);
+      cursor: pointer;
+      transition: border-color .2s, color .2s, transform .2s;
+      flex-shrink: 0;
+    }
+
+    .theme-btn:hover { border-color: var(--fg); color: var(--fg); transform: rotate(15deg); }
+
+    .theme-btn svg { width: 15px; height: 15px; }
+
+    .icon-sun  { display: none; }
+    .icon-moon { display: block; }
+
     /* ── LIGHT MODE ─────────────────── */
     @media (prefers-color-scheme: light) {
-      :root {
+      html:not([data-theme="dark"]) {
         --bg: #ffffff;
         --bg-card: #f8f8f8;
         --fg: #0a0a0a;
@@ -842,8 +864,53 @@
         --border: #ebebeb;
         --border-hover: #ccc;
       }
-      .cta-button { color: #fff; background: #0a0a0a; }
-      .tags li { background: rgba(0,0,0,.04); }
+      html:not([data-theme="dark"]) .cta-button { color: #fff; background: #0a0a0a; }
+      html:not([data-theme="dark"]) .tags li { background: rgba(0,0,0,.04); }
+      html:not([data-theme="dark"]) .icon-sun  { display: block; }
+      html:not([data-theme="dark"]) .icon-moon { display: none; }
+    }
+
+    html[data-theme="light"] {
+      --bg: #ffffff;
+      --bg-card: #f8f8f8;
+      --fg: #0a0a0a;
+      --muted: #aaa;
+      --muted-light: #555;
+      --border: #ebebeb;
+      --border-hover: #ccc;
+    }
+
+    html[data-theme="light"] .cta-button { color: #fff; background: #0a0a0a; }
+    html[data-theme="light"] .tags li    { background: rgba(0,0,0,.04); }
+    html[data-theme="light"] .icon-sun   { display: block; }
+    html[data-theme="light"] .icon-moon  { display: none; }
+
+    html[data-theme="dark"] .icon-sun  { display: none; }
+    html[data-theme="dark"] .icon-moon { display: block; }
+
+    /* ── HERO ENTRANCE ANIMATIONS ────── */
+    @keyframes hero-up {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .ha {
+      opacity: 0;
+      animation: hero-up 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: var(--d, 0ms);
+    }
+
+    /* ── GRADIENT SHIFT ──────────────── */
+    @keyframes grad-shift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899, #6366f1) !important;
+      background-size: 250% 250% !important;
+      animation: grad-shift 5s ease infinite !important;
     }
   </style>
 </head>
@@ -870,6 +937,18 @@
         <button class="lang-btn" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="es">ES</button>
       </div>
+      <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
       <a href="mailto:jergesbello@gmail.com" class="nav-cta" data-i18n="nav.cta">Get in touch</a>
     </div>
   </nav>
@@ -878,21 +957,21 @@
 
     <!-- HERO -->
     <section id="hero">
-      <div class="available-badge">
+      <div class="available-badge ha" style="--d:0ms">
         <span class="dot"></span>
         <span data-i18n="hero.badge">Available for projects</span>
       </div>
 
-      <div class="hero-brand">
+      <div class="hero-brand ha" style="--d:80ms">
         <span class="hero-brand-name">Jerges</span>
         <span class="hero-brand-sub">Bello &nbsp;·&nbsp; <span data-i18n="hero.role">Software Architect &amp; AI Builder</span></span>
       </div>
 
-      <p class="hero-tagline">
+      <p class="hero-tagline ha" style="--d:180ms">
         <span data-i18n="hero.h1a">Your idea,</span><br />
         <span class="gradient-text" data-i18n="hero.h1b">in production.</span>
       </p>
-      <div class="hero-chips">
+      <div class="hero-chips ha" style="--d:280ms">
         <span class="hero-chip" data-i18n="chip.webs">Webs</span>
         <span class="hero-chip" data-i18n="chip.apps">Apps</span>
         <span class="hero-chip" data-i18n="chip.mobile">Mobile</span>
@@ -902,30 +981,30 @@
         </span>
         <span class="hero-chip" data-i18n="chip.automation">Automation</span>
       </div>
-      <p class="hero-sub" data-i18n="hero.sub">
+      <p class="hero-sub ha" style="--d:360ms" data-i18n="hero.sub">
         Backend systems, AI agents and automation tools — from idea to production.
       </p>
 
-      <div class="hero-stats">
+      <div class="hero-stats ha" style="--d:440ms">
         <div class="stat">
-          <span class="stat-n">15+</span>
+          <span class="stat-n" data-count="15" data-suffix="+">15+</span>
           <span class="stat-l" data-i18n="stat.years">years building</span>
         </div>
         <div class="stat">
-          <span class="stat-n">2</span>
+          <span class="stat-n" data-count="2">2</span>
           <span class="stat-l" data-i18n="stat.products">live products</span>
         </div>
         <div class="stat">
-          <span class="stat-n">9</span>
+          <span class="stat-n" data-count="9">9</span>
           <span class="stat-l" data-i18n="stat.agents">AI agents active</span>
         </div>
         <div class="stat">
-          <span class="stat-n">3</span>
+          <span class="stat-n" data-count="3">3</span>
           <span class="stat-l" data-i18n="stat.companies">enterprise teams led</span>
         </div>
       </div>
 
-      <a href="#work" class="scroll-cta" data-i18n="hero.scroll">See my work ↓</a>
+      <a href="#work" class="scroll-cta ha" style="--d:540ms" data-i18n="hero.scroll">See my work ↓</a>
     </section>
 
     <!-- WHAT I BUILD -->
@@ -1348,7 +1427,53 @@
       });
     }
 
+    /* ── THEME TOGGLE ── */
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+
+    (function initTheme() {
+      const saved = localStorage.getItem('theme');
+      if (saved) applyTheme(saved);
+    })();
+
+    /* ── STAT COUNTER ── */
+    function animateCount(el) {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(ease * target) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+      /* Theme button */
+      document.getElementById('theme-btn').addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = current === 'dark' || (!current && systemDark);
+        applyTheme(isDark ? 'light' : 'dark');
+      });
+
+      /* Stats: animate when hero-stats becomes visible */
+      const statsObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.querySelectorAll('[data-count]').forEach(animateCount);
+            statsObs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      const statsEl = document.querySelector('.hero-stats');
+      if (statsEl) statsObs.observe(statsEl);
+
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
       });
