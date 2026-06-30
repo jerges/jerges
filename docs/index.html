@@ -428,6 +428,22 @@
       margin-bottom: 2.5rem;
     }
 
+    .section-label + .section-sub { margin-top: -2rem; }
+
+    .section-sub {
+      font-size: .9rem;
+      color: var(--muted-light);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .badge--founder {
+      background: linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
+                  linear-gradient(135deg, #6366f1, #a855f7) border-box;
+      border-color: transparent;
+      color: #a855f7;
+    }
+
     /* ── PROJECTS ──────────────────── */
     .project-grid {
       display: grid;
@@ -1085,7 +1101,8 @@
 
     <!-- WORK -->
     <section id="work">
-      <p class="section-label" data-i18n="work.label">Selected work</p>
+      <p class="section-label" data-i18n="work.label">My products</p>
+      <p class="section-sub" data-i18n="work.sub">Built, owned and run by me — not client work, not employment. My code, my servers, my risk.</p>
       <div class="project-grid">
 
         <article class="project project--roboteam">
@@ -1093,7 +1110,10 @@
           <div class="project-body">
             <div class="project-top">
               <h2>Roboteam</h2>
-              <a href="https://www.roboteam.es" target="_blank" rel="noopener" class="project-url">roboteam.es ↗</a>
+              <div style="display:flex;gap:.4rem;align-items:center;">
+                <span class="badge badge--founder" data-i18n="work.badge.founder">Founder</span>
+                <a href="https://www.roboteam.es" target="_blank" rel="noopener" class="project-url">roboteam.es ↗</a>
+              </div>
             </div>
             <p data-i18n="roboteam.desc">
               Your team of AI agents working for you 24/7. 9 specialized agents —
@@ -1111,7 +1131,10 @@
           <div class="project-body">
             <div class="project-top">
               <h2>Dentis</h2>
-              <span class="badge">SaaS</span>
+              <div style="display:flex;gap:.4rem;align-items:center;">
+                <span class="badge badge--founder" data-i18n="work.badge.founder">Founder</span>
+                <span class="badge">SaaS</span>
+              </div>
             </div>
             <p data-i18n="dentis.desc">
               Multi-tenant SaaS for dental clinic management. 9 hexagonal Maven modules — scheduling, digital clinical records with interactive odontogram, billing, document management and an AI clinical assistant. RAG over clinic documents powered by Amazon Bedrock Nova Pro, with real-time PubMed search, drug interaction checks (RxNorm), ICD-10 lookup and dosage calculation — streamed live via SSE.
@@ -1257,15 +1280,14 @@
         </div>
         <div class="about-right">
           <p data-i18n="about.p1">
-            I'm a software architect who got tired of being a cog in someone else's machine.
-            After 15 years leading teams at El Corte Inglés, JumboTours and Barceló —
-            designing microservice architectures, event-driven systems with Kafka and
-            cloud infrastructure on AWS and Azure — I decided to build my own products.
+            I spent 15 years as an engineer and technical lead at El Corte Inglés,
+            JumboTours and Barceló — as an employee, designing microservice architectures,
+            event-driven systems with Kafka and cloud infrastructure on AWS and Azure.
           </p>
           <p data-i18n="about.p2">
-            Roboteam and Dentis are the first. Both in production. Both growing.
-            I apply the same rigour I used in enterprise to problems that actually matter
-            for small businesses and entrepreneurs.
+            In 2024 I switched sides. Roboteam and Dentis are my own products —
+            built from scratch, 100% my code, running on my servers.
+            No client, no employer — just me shipping things and making them grow.
           </p>
           <p data-i18n="about.p3">
             Based in Spain. Available for projects worldwide. I work fast,
@@ -1367,7 +1389,9 @@
         'builds.mobile.desc':  'Native-quality iOS and Android apps built with React Native — one codebase, two platforms, shipped fast. From idea to the App Store and Google Play.',
         'builds.arch.title': 'Architecture',
         'builds.arch.desc':  '15+ years designing systems that don\'t fall over. CQRS, event sourcing, microservices — built for the teams at El Corte Inglés, Barceló and JumboTours, now available for you.',
-        'work.label':        'Selected work',
+        'work.label':        'My products',
+        'work.sub':          'Built, owned and run by me — not client work, not employment. My code, my servers, my risk.',
+        'work.badge.founder':'Founder',
         'roboteam.desc':     'Your team of AI agents working for you 24/7. 9 specialized agents — from secretary to trader — automating your business via Telegram, WhatsApp and Slack.',
         'dentis.desc':       'Multi-tenant SaaS for dental clinic management. 9 hexagonal Maven modules — scheduling, digital clinical records with interactive odontogram, billing, document management and an AI clinical assistant. RAG over clinic documents powered by Amazon Bedrock Nova Pro, with real-time PubMed search, drug interaction checks (RxNorm), ICD-10 lookup and dosage calculation — streamed live via SSE.',
         'stat.years':        'years building',
@@ -1389,8 +1413,8 @@
         'about.label':       'About',
         'about.h1':          '15+ years',
         'about.h2':          'shipping products.',
-        'about.p1':          "I've led engineering teams at El Corte Inglés, JumboTours and Barceló, designing microservice architectures, event-driven systems with Kafka and cloud infrastructure on AWS and Azure.",
-        'about.p2':          'Roboteam and Dentis are the first. Both in production. Both growing. I apply the same rigour I used in enterprise to problems that actually matter for small businesses and entrepreneurs.',
+        'about.p1':          'I spent 15 years as an engineer and technical lead at El Corte Inglés, JumboTours and Barceló — as an employee, designing microservice architectures, event-driven systems with Kafka and cloud infrastructure on AWS and Azure.',
+        'about.p2':          'In 2024 I switched sides. Roboteam and Dentis are my own products — built from scratch, 100% my code, running on my servers. No client, no employer — just me shipping things and making them grow.',
         'about.p3':          'Based in Spain. Available for projects worldwide. I work fast, communicate clearly, and ship things that work.',
         'stack.label':       'Stack',
         'contact.label':     "Let's build something",
@@ -1427,7 +1451,9 @@
         'builds.mobile.desc':  'Apps iOS y Android con calidad nativa usando React Native — una sola base de código, dos plataformas, entregadas rápido. De la idea a la App Store y Google Play.',
         'builds.arch.title': 'Arquitectura',
         'builds.arch.desc':  '+15 años diseñando sistemas que no caen. CQRS, event sourcing, microservicios — construidos para los equipos de El Corte Inglés, Barceló y JumboTours, ahora disponibles para ti.',
-        'work.label':        'Proyectos',
+        'work.label':        'Mis productos',
+        'work.sub':          'Construidos, en propiedad y gestionados por mí — no son trabajos para clientes ni empleos. Mi código, mis servidores, mi riesgo.',
+        'work.badge.founder':'Founder',
         'roboteam.desc':     'Tu equipo de agentes IA trabajando por ti las 24h. 9 agentes especializados — de secretaria a trader — automatizando tu negocio por Telegram, WhatsApp y Slack.',
         'dentis.desc':       'SaaS multi-tenant para gestión de clínicas dentales. 9 módulos Maven hexagonales — agenda, historia clínica digital con odontograma interactivo, facturación, gestión documental y asistente IA clínico. RAG sobre documentos de la clínica con Amazon Bedrock Nova Pro, búsqueda PubMed en tiempo real, validación de fármacos (RxNorm), ICD-10 y cálculo de dosis — todo en streaming SSE.',
         'stat.years':        'años construyendo',
@@ -1449,8 +1475,8 @@
         'about.label':       'Sobre mí',
         'about.h1':          '+15 años',
         'about.h2':          'creando productos.',
-        'about.p1':          'He liderado equipos técnicos en El Corte Inglés, JumboTours y Barceló, diseñando arquitecturas de microservicios, sistemas event-driven con Kafka e infraestructura cloud en AWS y Azure.',
-        'about.p2':          'Roboteam y Dentis son los primeros. Ambos en producción. Ambos creciendo. Aplico el mismo rigor que usé en enterprise a problemas que importan de verdad para pequeñas empresas y emprendedores.',
+        'about.p1':          'Pasé 15 años como ingeniero y líder técnico en El Corte Inglés, JumboTours y Barceló — como empleado, diseñando arquitecturas de microservicios, sistemas event-driven con Kafka e infraestructura cloud en AWS y Azure.',
+        'about.p2':          'En 2024 cambié de bando. Roboteam y Dentis son mis propios productos — construidos desde cero, 100% mi código, corriendo en mis servidores. Sin cliente, sin empleador — solo yo entregando y haciendo crecer.',
         'about.p3':          'Basado en España. Disponible para proyectos en todo el mundo. Trabajo rápido, me comunico con claridad y entrego cosas que funcionan.',
         'stack.label':       'Stack',
         'contact.label':     'Construyamos algo',
