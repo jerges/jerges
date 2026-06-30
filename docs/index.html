@@ -981,9 +981,13 @@
       border-radius: 14px;
       white-space: nowrap;
       flex-shrink: 0;
-      cursor: default;
+      cursor: pointer;
       transition: border-color .25s, transform .25s, box-shadow .25s;
       user-select: none;
+    }
+
+    .co-item:hover {
+      border-color: var(--border-hover);
     }
 
     .co-item:hover {
@@ -1190,8 +1194,8 @@
         <div class="ticker-fade-r" aria-hidden="true"></div>
         <div class="ticker-inner" aria-label="Companies I have worked with">
 
-          <!-- ITEMS SET 1 -->
-          <div class="co-item">
+          <!-- ITEMS SET 1 (data-url for click-to-site) -->
+          <div class="co-item" data-url="https://www.knowmadmood.com/es">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#7c3aed,#6366f1)">KM</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/knowmadmood.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://knowmadmood.com&size=128" alt="Knowmadmood" loading="lazy" onerror="coLogoError(this)">
@@ -1203,7 +1207,7 @@
             <span class="co-badge co-badge--current" data-i18n="companies.current">Current</span>
           </div>
 
-          <div class="co-item">
+          <div class="co-item" data-url="https://www.elcorteingles.es">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#005a2e,#007a3e)">ECI</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/elcorteingles.es" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://elcorteingles.es&size=128" alt="El Corte Inglés" loading="lazy" onerror="coLogoError(this)">
@@ -1215,7 +1219,7 @@
             <span class="co-badge co-badge--current" data-i18n="companies.current">Current</span>
           </div>
 
-          <div class="co-item">
+          <div class="co-item" data-url="https://www.btravel.com">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#c2410c,#f97316)">AV</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/btravel.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://btravel.com&size=128" alt="Avoris" loading="lazy" onerror="coLogoError(this)">
@@ -1227,7 +1231,7 @@
             <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
           </div>
 
-          <div class="co-item">
+          <div class="co-item" data-url="https://www.jumbotours.com">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#0369a1,#0ea5e9)">JT</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/jumbotours.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://jumbotours.com&size=128" alt="Jumbotours" loading="lazy" onerror="coLogoError(this)">
@@ -1239,7 +1243,7 @@
             <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
           </div>
 
-          <div class="co-item">
+          <div class="co-item" data-url="https://tcs.com.ve">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8)">TCS</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/tcs.com.ve" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tcs.com.ve&size=128" alt="TCS" loading="lazy" onerror="coLogoError(this)">
@@ -1251,7 +1255,7 @@
             <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
           </div>
 
-          <div class="co-item">
+          <div class="co-item" data-url="https://www.movilnet.com.ve/sitio/">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#b91c1c,#ef4444)">MOV</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/movilnet.com.ve" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.movilnet.com.ve/sitio/&size=128" alt="Movilnet" loading="lazy" onerror="coLogoError(this)">
@@ -1263,7 +1267,7 @@
             <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
           </div>
 
-          <div class="co-item">
+          <div class="co-item" data-url="https://www.banesco.com">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#004085,#0056b3)">BAN</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/banesco.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.banesco.com&size=128" alt="Banesco" loading="lazy" onerror="coLogoError(this)">
@@ -1276,7 +1280,7 @@
           </div>
 
           <!-- ITEMS SET 2 (seamless loop duplicate) -->
-          <div class="co-item" aria-hidden="true">
+          <div class="co-item" aria-hidden="true" data-url="https://www.knowmadmood.com/es">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#7c3aed,#6366f1)">KM</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/knowmadmood.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://knowmadmood.com&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
@@ -1288,7 +1292,7 @@
             <span class="co-badge co-badge--current" data-i18n="companies.current">Current</span>
           </div>
 
-          <div class="co-item" aria-hidden="true">
+          <div class="co-item" aria-hidden="true" data-url="https://www.elcorteingles.es">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#005a2e,#007a3e)">ECI</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/elcorteingles.es" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://elcorteingles.es&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
@@ -1300,7 +1304,7 @@
             <span class="co-badge co-badge--current" data-i18n="companies.current">Current</span>
           </div>
 
-          <div class="co-item" aria-hidden="true">
+          <div class="co-item" aria-hidden="true" data-url="https://www.btravel.com">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#c2410c,#f97316)">AV</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/btravel.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://btravel.com&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
@@ -1312,7 +1316,7 @@
             <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
           </div>
 
-          <div class="co-item" aria-hidden="true">
+          <div class="co-item" aria-hidden="true" data-url="https://www.jumbotours.com">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#0369a1,#0ea5e9)">JT</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/jumbotours.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://jumbotours.com&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
@@ -1324,7 +1328,7 @@
             <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
           </div>
 
-          <div class="co-item" aria-hidden="true">
+          <div class="co-item" aria-hidden="true" data-url="https://tcs.com.ve">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8)">TCS</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/tcs.com.ve" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tcs.com.ve&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
@@ -1336,7 +1340,7 @@
             <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
           </div>
 
-          <div class="co-item" aria-hidden="true">
+          <div class="co-item" aria-hidden="true" data-url="https://www.movilnet.com.ve/sitio/">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#b91c1c,#ef4444)">MOV</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/movilnet.com.ve" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.movilnet.com.ve/sitio/&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
@@ -1348,7 +1352,7 @@
             <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
           </div>
 
-          <div class="co-item" aria-hidden="true">
+          <div class="co-item" aria-hidden="true" data-url="https://www.banesco.com">
             <div class="co-logo-wrap">
               <div class="co-mark" style="background:linear-gradient(135deg,#004085,#0056b3)">BAN</div>
               <img class="co-logo-img" src="https://logo.clearbit.com/banesco.com" data-fallback="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.banesco.com&size=128" alt="" loading="lazy" onerror="coLogoError(this)">
@@ -1915,6 +1919,65 @@
       document.querySelectorAll('section:not(#hero), .project, .stack-item')
         .forEach(el => { el.classList.add('fade-in'); observer.observe(el); });
     });
+
+    (function () {
+      const wrap = document.querySelector('.ticker-wrap');
+      const inner = document.querySelector('.ticker-inner');
+      if (!wrap || !inner) return;
+
+      let dragging = false, startX = 0, baseX = 0, dragMoved = false;
+
+      function getX() {
+        return new DOMMatrix(getComputedStyle(inner).transform).m41;
+      }
+
+      function normX(x) {
+        const half = inner.scrollWidth / 2;
+        x = x % half;
+        if (x > 0) x -= half;
+        return x;
+      }
+
+      function startDrag(x) {
+        dragging = true;
+        dragMoved = false;
+        startX = x;
+        baseX = getX();
+        inner.style.animation = 'none';
+        inner.style.transform = `translateX(${baseX}px)`;
+        wrap.style.cursor = 'grabbing';
+      }
+
+      function moveDrag(x) {
+        if (!dragging) return;
+        if (Math.abs(x - startX) > 4) dragMoved = true;
+        inner.style.transform = `translateX(${normX(baseX + x - startX)}px)`;
+      }
+
+      function endDrag(x, target) {
+        if (!dragging) return;
+        dragging = false;
+        if (!dragMoved && target) {
+          const item = target.closest('[data-url]');
+          if (item) window.open(item.dataset.url, '_blank', 'noopener');
+        }
+        const curX = normX(getX());
+        const half = inner.scrollWidth / 2;
+        const delay = (Math.abs(curX) / half) * 50;
+        inner.style.transform = '';
+        inner.style.animation = `ticker-scroll 50s linear ${-delay}s infinite`;
+        wrap.style.cursor = 'grab';
+      }
+
+      wrap.addEventListener('mousedown', e => { startDrag(e.clientX); e.preventDefault(); });
+      window.addEventListener('mousemove', e => { if (dragging) moveDrag(e.clientX); });
+      window.addEventListener('mouseup', e => endDrag(e.clientX, e.target));
+      wrap.addEventListener('touchstart', e => startDrag(e.touches[0].clientX), { passive: true });
+      wrap.addEventListener('touchmove', e => { moveDrag(e.touches[0].clientX); e.preventDefault(); }, { passive: false });
+      wrap.addEventListener('touchend', e => endDrag(null, e.target));
+
+      wrap.style.cursor = 'grab';
+    })();
 
     function coLogoError(img) {
       const fallback = img.dataset.fallback;
