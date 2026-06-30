@@ -1,6 +1,8 @@
 <img src="docs/assets/logo-mark.svg" width="56" alt="Jerges Bello" />
 
-# Jerges Bello
+# Jerges
+
+**Bello** · Software Architect & AI Builder
 
 Your idea, in production. Backend systems, AI-powered platforms and automation tools.
 

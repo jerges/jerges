@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jerges Bello — Your idea, in production.</title>
+  <title>Jerges — Your idea, in production.</title>
   <meta name="description" content="Your idea, in production. Backend systems, AI-powered platforms and automation tools." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -160,11 +160,33 @@
       50% { opacity:.4; }
     }
 
-    #hero h1 {
-      font-size: clamp(3.5rem, 10vw, 7rem);
+    /* ── HERO BRAND NAME ────────────── */
+    .hero-brand { margin-bottom: 2rem; }
+
+    .hero-brand-name {
+      font-size: clamp(5.5rem, 20vw, 13rem);
+      font-weight: 700;
+      letter-spacing: -.06em;
+      line-height: .88;
+      color: var(--fg);
+      display: block;
+    }
+
+    .hero-brand-sub {
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: .75rem;
+      display: block;
+    }
+
+    .hero-tagline {
+      font-size: clamp(2rem, 5.5vw, 3.75rem);
       font-weight: 700;
       letter-spacing: -.04em;
-      line-height: 1;
+      line-height: 1.05;
       margin-bottom: 1.75rem;
     }
 
@@ -840,7 +862,7 @@
         <path d="M 29 11 L 29 32 C 29 43 15 43 15 35" stroke="white" stroke-width="6" fill="none" stroke-linecap="round"/>
         <line x1="22" y1="11" x2="36" y2="11" stroke="white" stroke-width="6" stroke-linecap="round"/>
       </svg>
-      <span class="nav-name">Jerges Bello</span>
+      <span class="nav-name">Jerges</span>
     </a>
 
     <div class="nav-right">
@@ -856,27 +878,20 @@
 
     <!-- HERO -->
     <section id="hero">
-      <div class="hero-logo">
-        <svg width="64" height="64" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="hero-g" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#6366f1"/>
-              <stop offset="100%" stop-color="#a855f7"/>
-            </linearGradient>
-          </defs>
-          <rect width="48" height="48" rx="11" fill="url(#hero-g)"/>
-          <path d="M 29 11 L 29 32 C 29 43 15 43 15 35" stroke="white" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <line x1="22" y1="11" x2="36" y2="11" stroke="white" stroke-width="6" stroke-linecap="round"/>
-        </svg>
-      </div>
       <div class="available-badge">
         <span class="dot"></span>
         <span data-i18n="hero.badge">Available for projects</span>
       </div>
-      <h1>
+
+      <div class="hero-brand">
+        <span class="hero-brand-name">Jerges</span>
+        <span class="hero-brand-sub">Bello &nbsp;·&nbsp; <span data-i18n="hero.role">Software Architect &amp; AI Builder</span></span>
+      </div>
+
+      <p class="hero-tagline">
         <span data-i18n="hero.h1a">Your idea,</span><br />
         <span class="gradient-text" data-i18n="hero.h1b">in production.</span>
-      </h1>
+      </p>
       <div class="hero-chips">
         <span class="hero-chip" data-i18n="chip.webs">Webs</span>
         <span class="hero-chip" data-i18n="chip.apps">Apps</span>
@@ -1061,7 +1076,7 @@
                       <line x1="22" y1="11" x2="36" y2="11" stroke="white" stroke-width="6" stroke-linecap="round"/>
                     </svg>
                     <div class="bc-logo-text">
-                      <span class="bc-name">Jerges Bello</span>
+                      <span class="bc-name">Jerges <span style="font-weight:300;color:#444">Bello</span></span>
                       <span class="bc-role">Software Architect &nbsp;·&nbsp; AI Builder</span>
                     </div>
                   </div>
@@ -1103,7 +1118,7 @@
                     <line x1="22" y1="11" x2="36" y2="11" stroke="white" stroke-width="6" stroke-linecap="round"/>
                   </svg>
                 </div>
-                <div class="bc-back-name">Jerges Bello</div>
+                <div class="bc-back-name">Jerges <span style="font-weight:300;opacity:.7">Bello</span></div>
                 <div class="bc-back-tagline" data-i18n="hero.sub-short">Your idea, in production.</div>
                 <div class="bc-divider"></div>
                 <div class="bc-services">
@@ -1194,6 +1209,7 @@
       en: {
         'nav.cta':           'Get in touch',
         'hero.badge':        'Available for projects',
+        'hero.role':         'Software Architect & AI Builder',
         'hero.h1a':          'Your idea,',
         'hero.h1b':          'in production.',
         'hero.sub':          'Backend systems, AI agents and automation tools — from idea to production.',
@@ -1251,6 +1267,7 @@
       es: {
         'nav.cta':           'Hablemos',
         'hero.badge':        'Disponible para proyectos',
+        'hero.role':         'Arquitecto de Software & AI Builder',
         'hero.h1a':          'Tu idea,',
         'hero.h1b':          'en producción.',
         'hero.sub':          'Sistemas backend, agentes IA y herramientas de automatización — de la idea a producción.',
