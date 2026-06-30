@@ -1954,27 +1954,31 @@
         inner.style.transform = `translateX(${normX(baseX + x - startX)}px)`;
       }
 
-      function endDrag(x, target) {
+      function endDrag() {
         if (!dragging) return;
         dragging = false;
-        if (!dragMoved && target) {
-          const item = target.closest('[data-url]');
-          if (item) window.open(item.dataset.url, '_blank', 'noopener');
-        }
         const curX = normX(getX());
         const half = inner.scrollWidth / 2;
         const delay = (Math.abs(curX) / half) * 50;
         inner.style.transform = '';
+        void inner.offsetWidth; /* force reflow so animation restarts cleanly */
         inner.style.animation = `ticker-scroll 50s linear ${-delay}s infinite`;
         wrap.style.cursor = 'grab';
       }
 
+      /* Click is a trusted user gesture on all browsers/iOS — use it for navigation */
+      wrap.addEventListener('click', e => {
+        if (dragMoved) return;
+        const item = e.target.closest('[data-url]');
+        if (item) window.open(item.dataset.url, '_blank', 'noopener');
+      });
+
       wrap.addEventListener('mousedown', e => { startDrag(e.clientX); e.preventDefault(); });
       window.addEventListener('mousemove', e => { if (dragging) moveDrag(e.clientX); });
-      window.addEventListener('mouseup', e => endDrag(e.clientX, e.target));
+      window.addEventListener('mouseup', endDrag);
       wrap.addEventListener('touchstart', e => startDrag(e.touches[0].clientX), { passive: true });
       wrap.addEventListener('touchmove', e => { moveDrag(e.touches[0].clientX); e.preventDefault(); }, { passive: false });
-      wrap.addEventListener('touchend', e => endDrag(null, e.target));
+      wrap.addEventListener('touchend', endDrag);
 
       wrap.style.cursor = 'grab';
     })();
