@@ -27,4 +27,4 @@ Based in Spain · Available for projects
 
 ---
 
-[jabex.com.es](http://www.jabex.com.es) · [jergesbello@gmail.com](mailto:jergesbello@gmail.com)
+[jergesbello@gmail.com](mailto:jergesbello@gmail.com)
