@@ -924,6 +924,127 @@
     html[data-theme="dark"] .icon-sun  { display: none; }
     html[data-theme="dark"] .icon-moon { display: block; }
 
+    /* ── COMPANIES TICKER ───────────── */
+    #companies {
+      max-width: none;
+      padding: 2.5rem 0 3.5rem;
+      overflow: hidden;
+    }
+
+    .companies-header {
+      max-width: 860px;
+      margin: 0 auto 1.75rem;
+      padding: 0 2rem;
+    }
+
+    .ticker-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ticker-fade-l,
+    .ticker-fade-r {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .ticker-fade-l { left: 0; background: linear-gradient(90deg, var(--bg) 20%, transparent); }
+    .ticker-fade-r { right: 0; background: linear-gradient(-90deg, var(--bg) 20%, transparent); }
+
+    .ticker-inner {
+      display: flex;
+      width: max-content;
+      animation: ticker-scroll 50s linear infinite;
+    }
+
+    .ticker-inner:hover { animation-play-state: paused; }
+
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .co-item {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      padding: .85rem 1.4rem;
+      margin: 0 .45rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: default;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      user-select: none;
+    }
+
+    .co-item:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.3);
+    }
+
+    .co-mark {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .65rem;
+      font-weight: 800;
+      color: rgba(255,255,255,.95);
+      letter-spacing: .04em;
+      flex-shrink: 0;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .co-text { display: flex; flex-direction: column; gap: .2rem; }
+
+    .co-name {
+      font-size: .9rem;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      color: var(--fg);
+      line-height: 1;
+    }
+
+    .co-sub {
+      font-size: .72rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: .01em;
+      line-height: 1;
+    }
+
+    .co-badge {
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .2rem .6rem;
+      border-radius: 100px;
+      align-self: center;
+      flex-shrink: 0;
+    }
+
+    .co-badge--current {
+      background: rgba(34, 197, 94, .1);
+      color: #22c55e;
+      border: 1px solid rgba(34, 197, 94, .22);
+    }
+
+    .co-badge--past {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
     /* ── HERO ENTRANCE ANIMATIONS ────── */
     @keyframes hero-up {
       from { opacity: 0; transform: translateY(28px); }
@@ -1035,6 +1156,148 @@
       </div>
 
       <a href="#work" class="scroll-cta ha" style="--d:540ms" data-i18n="hero.scroll">See my work ↓</a>
+    </section>
+
+    <!-- COMPANIES TICKER -->
+    <section id="companies">
+      <div class="companies-header">
+        <p class="section-label" data-i18n="companies.label">Trusted by</p>
+      </div>
+      <div class="ticker-wrap">
+        <div class="ticker-fade-l" aria-hidden="true"></div>
+        <div class="ticker-fade-r" aria-hidden="true"></div>
+        <div class="ticker-inner" aria-label="Companies I have worked with">
+
+          <!-- ITEMS SET 1 -->
+          <div class="co-item">
+            <div class="co-mark" style="background: linear-gradient(135deg,#7c3aed,#6366f1)">KM</div>
+            <div class="co-text">
+              <span class="co-name">Knowmadmood</span>
+              <span class="co-sub">Tech Consulting · Madrid</span>
+            </div>
+            <span class="co-badge co-badge--current" data-i18n="companies.current">Current</span>
+          </div>
+
+          <div class="co-item">
+            <div class="co-mark" style="background: linear-gradient(135deg,#005a2e,#007a3e)">ECI</div>
+            <div class="co-text">
+              <span class="co-name">El Corte Inglés</span>
+              <span class="co-sub">Retail · Madrid</span>
+            </div>
+            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+          </div>
+
+          <div class="co-item">
+            <div class="co-mark" style="background: linear-gradient(135deg,#c2410c,#f97316)">AV</div>
+            <div class="co-text">
+              <span class="co-name">Avoris</span>
+              <span class="co-sub" data-i18n="companies.avoris.sub">Travel · Barceloviajes</span>
+            </div>
+            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+          </div>
+
+          <div class="co-item">
+            <div class="co-mark" style="background: linear-gradient(135deg,#0369a1,#0ea5e9)">JT</div>
+            <div class="co-text">
+              <span class="co-name">Jumbotours</span>
+              <span class="co-sub">Travel · Spain</span>
+            </div>
+            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+          </div>
+
+          <div class="co-item">
+            <div class="co-mark" style="background: linear-gradient(135deg,#1e3a8a,#1d4ed8)">TCS</div>
+            <div class="co-text">
+              <span class="co-name">TCS</span>
+              <span class="co-sub">IT Services · Venezuela</span>
+            </div>
+            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+          </div>
+
+          <div class="co-item">
+            <div class="co-mark" style="background: linear-gradient(135deg,#b91c1c,#ef4444)">MOV</div>
+            <div class="co-text">
+              <span class="co-name">Movilnet</span>
+              <span class="co-sub">Telecoms · Venezuela</span>
+            </div>
+            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+          </div>
+
+          <div class="co-item">
+            <div class="co-mark" style="background: linear-gradient(135deg,#004085,#0056b3)">BAN</div>
+            <div class="co-text">
+              <span class="co-name">Banesco</span>
+              <span class="co-sub">Banking · Venezuela</span>
+            </div>
+            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+          </div>
+
+          <!-- ITEMS SET 2 (seamless loop duplicate) -->
+          <div class="co-item" aria-hidden="true">
+            <div class="co-mark" style="background: linear-gradient(135deg,#7c3aed,#6366f1)">KM</div>
+            <div class="co-text">
+              <span class="co-name">Knowmadmood</span>
+              <span class="co-sub">Tech Consulting · Madrid</span>
+            </div>
+            <span class="co-badge co-badge--current" data-i18n="companies.current">Current</span>
+          </div>
+
+          <div class="co-item" aria-hidden="true">
+            <div class="co-mark" style="background: linear-gradient(135deg,#005a2e,#007a3e)">ECI</div>
+            <div class="co-text">
+              <span class="co-name">El Corte Inglés</span>
+              <span class="co-sub">Retail · Madrid</span>
+            </div>
+            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+          </div>
+
+          <div class="co-item" aria-hidden="true">
+            <div class="co-mark" style="background: linear-gradient(135deg,#c2410c,#f97316)">AV</div>
+            <div class="co-text">
+              <span class="co-name">Avoris</span>
+              <span class="co-sub" data-i18n="companies.avoris.sub">Travel · Barceloviajes</span>
+            </div>
+            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+          </div>
+
+          <div class="co-item" aria-hidden="true">
+            <div class="co-mark" style="background: linear-gradient(135deg,#0369a1,#0ea5e9)">JT</div>
+            <div class="co-text">
+              <span class="co-name">Jumbotours</span>
+              <span class="co-sub">Travel · Spain</span>
+            </div>
+            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+          </div>
+
+          <div class="co-item" aria-hidden="true">
+            <div class="co-mark" style="background: linear-gradient(135deg,#1e3a8a,#1d4ed8)">TCS</div>
+            <div class="co-text">
+              <span class="co-name">TCS</span>
+              <span class="co-sub">IT Services · Venezuela</span>
+            </div>
+            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+          </div>
+
+          <div class="co-item" aria-hidden="true">
+            <div class="co-mark" style="background: linear-gradient(135deg,#b91c1c,#ef4444)">MOV</div>
+            <div class="co-text">
+              <span class="co-name">Movilnet</span>
+              <span class="co-sub">Telecoms · Venezuela</span>
+            </div>
+            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+          </div>
+
+          <div class="co-item" aria-hidden="true">
+            <div class="co-mark" style="background: linear-gradient(135deg,#004085,#0056b3)">BAN</div>
+            <div class="co-text">
+              <span class="co-name">Banesco</span>
+              <span class="co-sub">Banking · Venezuela</span>
+            </div>
+            <span class="co-badge co-badge--past" data-i18n="companies.past">Past</span>
+          </div>
+
+        </div><!-- /.ticker-inner -->
+      </div><!-- /.ticker-wrap -->
     </section>
 
     <!-- WHAT I BUILD -->
@@ -1379,6 +1642,10 @@
         'chip.mobile':       'Mobile',
         'chip.ai':           'AI Agents',
         'chip.automation':   'Automation',
+        'companies.label':       'Experience',
+        'companies.current':     'Current',
+        'companies.past':        'Past',
+        'companies.avoris.sub':  'Travel · Barceloviajes',
         'builds.label':      'What I build',
         'builds.webs.title': 'Webs',
         'builds.webs.desc':  'Landing pages that convert, corporate sites that build trust and product webs that sell — pixel-perfect design with blazing-fast performance.',
@@ -1441,6 +1708,10 @@
         'chip.mobile':       'Mobile',
         'chip.ai':           'Agentes IA',
         'chip.automation':   'Automatización',
+        'companies.label':       'Experiencia',
+        'companies.current':     'Actual',
+        'companies.past':        'Pasado',
+        'companies.avoris.sub':  'Travel · Barceloviajes',
         'builds.label':      'Qué construyo',
         'builds.webs.title': 'Webs',
         'builds.webs.desc':  'Landing pages que convierten, webs corporativas que generan confianza y webs de producto que venden — diseño perfecto al píxel con rendimiento extremo.',
