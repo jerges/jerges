@@ -191,12 +191,11 @@
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899, #6366f1);
-      background-size: 250% 250%;
+      background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: grad-shift 5s ease infinite;
+      animation: hue-spin 8s linear infinite;
     }
 
     .hero-sub {
@@ -322,7 +321,8 @@
       align-items: start;
     }
 
-    .build-card--full {
+    .build-card--full,
+    a.build-card-link:has(.build-card--full) {
       grid-column: 1 / -1;
     }
 
@@ -381,6 +381,27 @@
     }
 
     .build-card p { font-size: .875rem; color: var(--muted-light); line-height: 1.65; }
+
+    a.build-card-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    a.build-card-link .build-card { cursor: pointer; }
+    a.build-card-link .build-card::after {
+      content: '↗';
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-size: .8rem;
+      color: var(--muted);
+      opacity: 0;
+      transition: opacity .2s, transform .2s;
+    }
+    a.build-card-link:hover .build-card::after {
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
 
     .build-badge {
       display: inline-block;
@@ -820,7 +841,8 @@
       #hero { padding: 7rem 1.25rem 4rem; }
       section:not(#hero) { padding: 4rem 1.25rem; }
       .builds-grid { grid-template-columns: 1fr; }
-      .build-card--full { grid-column: auto; }
+      .build-card--full,
+      a.build-card-link:has(.build-card--full) { grid-column: auto; }
       .process-grid { grid-template-columns: 1fr; gap: 2rem; }
       .hero-stats { gap: 1.5rem; }
       .project-grid { grid-template-columns: 1fr; }
@@ -903,10 +925,9 @@
     }
 
     /* ── GRADIENT SHIFT ──────────────── */
-    @keyframes grad-shift {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes hue-spin {
+      from { filter: hue-rotate(0deg); }
+      to   { filter: hue-rotate(360deg); }
     }
 
   </style>
@@ -1009,20 +1030,25 @@
       <p class="section-label" data-i18n="builds.label">What I build</p>
       <div class="builds-grid">
 
+        <a class="build-card-link" href="#contact">
         <div class="build-card">
           <div class="build-icon">◻</div>
           <h3 data-i18n="builds.webs.title">Webs</h3>
           <p class="build-meta">Landing pages · Corporate · Product</p>
           <p data-i18n="builds.webs.desc">Landing pages that convert, corporate sites that build trust and product webs that sell — pixel-perfect design with blazing-fast performance.</p>
         </div>
+        </a>
 
+        <a class="build-card-link" href="#work">
         <div class="build-card">
           <div class="build-icon">{ }</div>
           <h3 data-i18n="builds.apps.title">Apps</h3>
           <p class="build-meta">E-commerce · Backoffice · APIs</p>
           <p data-i18n="builds.apps.desc">E-commerce platforms, backoffice tools and custom APIs — full-stack products engineered to scale from day one.</p>
         </div>
+        </a>
 
+        <a class="build-card-link" href="#work">
         <div class="build-card build-card--ai build-card--full">
           <div class="build-accent-bar"></div>
           <div class="build-icon ai-icon">✦</div>
@@ -1030,26 +1056,33 @@
           <p data-i18n="builds.ai.desc">9 specialized agents — from secretary to trader — running your business around the clock. They respond, execute and automate via Telegram, WhatsApp and Slack. You sleep, they work.</p>
           <span class="build-badge" data-i18n="builds.ai.badge">New</span>
         </div>
+        </a>
 
+        <a class="build-card-link" href="#contact">
         <div class="build-card">
           <div class="build-icon">⚙</div>
           <h3 data-i18n="builds.auto.title">Automation</h3>
           <p data-i18n="builds.auto.desc">Kafka-powered pipelines, webhook integrations and smart workflows that kill repetition — so your business runs itself.</p>
         </div>
+        </a>
 
+        <a class="build-card-link" href="#contact">
         <div class="build-card">
           <div class="build-icon">📱</div>
           <h3 data-i18n="builds.mobile.title">Mobile</h3>
           <p class="build-meta">iOS · Android · React Native</p>
           <p data-i18n="builds.mobile.desc">Native-quality iOS and Android apps built with React Native — one codebase, two platforms, shipped fast. From idea to the App Store and Google Play.</p>
         </div>
+        </a>
 
+        <a class="build-card-link" href="#about">
         <div class="build-card">
           <div class="build-icon">⬡</div>
           <h3 data-i18n="builds.arch.title">Architecture</h3>
           <p class="build-meta">Microservices · Event-driven · Cloud</p>
           <p data-i18n="builds.arch.desc">15+ years designing systems that don't fall over. CQRS, event sourcing, microservices — built for the teams at El Corte Inglés, Barceló and JumboTours, now available for you.</p>
         </div>
+        </a>
 
       </div>
     </section>
