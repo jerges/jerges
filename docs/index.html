@@ -191,10 +191,12 @@
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+      background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899, #6366f1);
+      background-size: 250% 250%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: grad-shift 5s ease infinite;
     }
 
     .hero-sub {
@@ -907,11 +909,6 @@
       100% { background-position: 0% 50%; }
     }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899, #6366f1) !important;
-      background-size: 250% 250% !important;
-      animation: grad-shift 5s ease infinite !important;
-    }
   </style>
 </head>
 <body>
