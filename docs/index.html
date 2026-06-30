@@ -231,6 +231,65 @@
 
     .scroll-cta:hover { color: var(--fg); }
 
+    /* ── HERO STATS ─────────────────── */
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat { display: flex; flex-direction: column; gap: .1rem; }
+
+    .stat-n {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      color: var(--fg);
+      line-height: 1;
+    }
+
+    .stat-l {
+      font-size: .72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+    }
+
+    /* ── PROCESS ─────────────────────── */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+    }
+
+    .process-n {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: var(--muted);
+    }
+
+    .process-step h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      color: var(--fg);
+    }
+
+    .process-step p {
+      font-size: .9rem;
+      color: var(--muted-light);
+      line-height: 1.65;
+    }
+
     /* ── WHAT I BUILD ──────────────── */
     .builds-grid {
       display: grid;
@@ -738,6 +797,8 @@
       section:not(#hero) { padding: 4rem 1.25rem; }
       .builds-grid { grid-template-columns: 1fr; }
       .build-card--full { grid-column: auto; }
+      .process-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-stats { gap: 1.5rem; }
       .project-grid { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .stack-grid { grid-template-columns: repeat(2, 1fr); }
@@ -828,6 +889,26 @@
       <p class="hero-sub" data-i18n="hero.sub">
         Backend systems, AI agents and automation tools — from idea to production.
       </p>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-n">15+</span>
+          <span class="stat-l" data-i18n="stat.years">years building</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">2</span>
+          <span class="stat-l" data-i18n="stat.products">live products</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">9</span>
+          <span class="stat-l" data-i18n="stat.agents">AI agents active</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">3</span>
+          <span class="stat-l" data-i18n="stat.companies">enterprise teams led</span>
+        </div>
+      </div>
+
       <a href="#work" class="scroll-cta" data-i18n="hero.scroll">See my work ↓</a>
     </section>
 
@@ -914,6 +995,32 @@
             </ul>
           </div>
         </article>
+
+      </div>
+    </section>
+
+    <!-- HOW I WORK -->
+    <section id="process">
+      <p class="section-label" data-i18n="process.label">How I work</p>
+      <div class="process-grid">
+
+        <div class="process-step">
+          <span class="process-n">01</span>
+          <h4 data-i18n="process.s1.title">Listen</h4>
+          <p data-i18n="process.s1.desc">I start by understanding the real problem, not just the brief. Most software fails because it solves the wrong thing.</p>
+        </div>
+
+        <div class="process-step">
+          <span class="process-n">02</span>
+          <h4 data-i18n="process.s2.title">Architect</h4>
+          <p data-i18n="process.s2.desc">Before a single line of code, I design the system. Tech choices, data flow, integrations — mapped before they become technical debt.</p>
+        </div>
+
+        <div class="process-step">
+          <span class="process-n">03</span>
+          <h4 data-i18n="process.s3.title">Ship</h4>
+          <p data-i18n="process.s3.desc">Fast iterations, real feedback. I deploy early and often. "In production" isn't the finish line — it's where the real work starts.</p>
+        </div>
 
       </div>
     </section>
@@ -1019,13 +1126,19 @@
         </div>
         <div class="about-right">
           <p data-i18n="about.p1">
-            I've led engineering teams at El Corte Inglés, JumboTours and Barceló,
+            I'm a software architect who got tired of being a cog in someone else's machine.
+            After 15 years leading teams at El Corte Inglés, JumboTours and Barceló —
             designing microservice architectures, event-driven systems with Kafka and
-            cloud infrastructure on AWS and Azure.
+            cloud infrastructure on AWS and Azure — I decided to build my own products.
           </p>
           <p data-i18n="about.p2">
-            Now I apply that same depth to building my own products and
-            solving real problems for small businesses and entrepreneurs.
+            Roboteam and Dentis are the first. Both in production. Both growing.
+            I apply the same rigour I used in enterprise to problems that actually matter
+            for small businesses and entrepreneurs.
+          </p>
+          <p data-i18n="about.p3">
+            Based in Spain. Available for projects worldwide. I work fast,
+            communicate clearly, and ship things that work.
           </p>
         </div>
       </div>
@@ -1098,6 +1211,17 @@
         'work.label':        'Selected work',
         'roboteam.desc':     'Your team of AI agents working for you 24/7. 9 specialized agents — from secretary to trader — automating your business via Telegram, WhatsApp and Slack.',
         'dentis.desc':       'Full dental clinic management platform — scheduling, digital clinical records with interactive odontogram, billing and an AI clinical assistant with RAG powered by Amazon Bedrock.',
+        'stat.years':        'years building',
+        'stat.products':     'live products',
+        'stat.agents':       'AI agents active',
+        'stat.companies':    'enterprise teams led',
+        'process.label':     'How I work',
+        'process.s1.title':  'Listen',
+        'process.s1.desc':   'I start by understanding the real problem, not just the brief. Most software fails because it solves the wrong thing.',
+        'process.s2.title':  'Architect',
+        'process.s2.desc':   'Before a single line of code, I design the system. Tech choices, data flow, integrations — mapped before they become technical debt.',
+        'process.s3.title':  'Ship',
+        'process.s3.desc':   'Fast iterations, real feedback. I deploy early and often. "In production" isn\'t the finish line — it\'s where the real work starts.',
         'card.label':        'Business card',
         'card.front':        'Front',
         'card.back':         'Back',
@@ -1105,7 +1229,8 @@
         'about.h1':          '15+ years',
         'about.h2':          'shipping products.',
         'about.p1':          "I've led engineering teams at El Corte Inglés, JumboTours and Barceló, designing microservice architectures, event-driven systems with Kafka and cloud infrastructure on AWS and Azure.",
-        'about.p2':          'Now I apply that same depth to building my own products and solving real problems for small businesses and entrepreneurs.',
+        'about.p2':          'Roboteam and Dentis are the first. Both in production. Both growing. I apply the same rigour I used in enterprise to problems that actually matter for small businesses and entrepreneurs.',
+        'about.p3':          'Based in Spain. Available for projects worldwide. I work fast, communicate clearly, and ship things that work.',
         'stack.label':       'Stack',
         'contact.label':     "Let's build something",
         'contact.h1':        'Have a project',
@@ -1140,6 +1265,17 @@
         'work.label':        'Proyectos',
         'roboteam.desc':     'Tu equipo de agentes IA trabajando por ti las 24h. 9 agentes especializados — de secretaria a trader — automatizando tu negocio por Telegram, WhatsApp y Slack.',
         'dentis.desc':       'Plataforma completa de gestión para clínicas dentales — agenda, historia clínica digital con odontograma interactivo, facturación y asistente IA clínico con RAG sobre Amazon Bedrock.',
+        'stat.years':        'años construyendo',
+        'stat.products':     'productos en producción',
+        'stat.agents':       'agentes IA activos',
+        'stat.companies':    'equipos enterprise liderados',
+        'process.label':     'Cómo trabajo',
+        'process.s1.title':  'Escucho',
+        'process.s1.desc':   'Empiezo entendiendo el problema real, no solo el brief. La mayoría del software falla porque resuelve lo equivocado.',
+        'process.s2.title':  'Diseño',
+        'process.s2.desc':   'Antes de una sola línea de código, diseño el sistema. Tecnología, flujo de datos, integraciones — todo mapeado antes de que se convierta en deuda técnica.',
+        'process.s3.title':  'Entrego',
+        'process.s3.desc':   'Iteraciones rápidas, feedback real. Despliego pronto y a menudo. "En producción" no es la meta — es donde empieza el trabajo de verdad.',
         'card.label':        'Tarjeta de visita',
         'card.front':        'Anverso',
         'card.back':         'Reverso',
@@ -1147,7 +1283,8 @@
         'about.h1':          '+15 años',
         'about.h2':          'creando productos.',
         'about.p1':          'He liderado equipos técnicos en El Corte Inglés, JumboTours y Barceló, diseñando arquitecturas de microservicios, sistemas event-driven con Kafka e infraestructura cloud en AWS y Azure.',
-        'about.p2':          'Ahora aplico esa misma profundidad para construir mis propios productos y resolver problemas reales para pequeñas empresas y emprendedores.',
+        'about.p2':          'Roboteam y Dentis son los primeros. Ambos en producción. Ambos creciendo. Aplico el mismo rigor que usé en enterprise a problemas que importan de verdad para pequeñas empresas y emprendedores.',
+        'about.p3':          'Basado en España. Disponible para proyectos en todo el mundo. Trabajo rápido, me comunico con claridad y entrego cosas que funcionan.',
         'stack.label':       'Stack',
         'contact.label':     'Construyamos algo',
         'contact.h1':        '¿Tienes un proyecto',
