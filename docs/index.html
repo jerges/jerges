@@ -519,6 +519,50 @@
     .project--roboteam .project-accent { background: linear-gradient(90deg, var(--accent-roboteam-a), var(--accent-roboteam-b)); }
     .project--dentis  .project-accent { background: linear-gradient(90deg, var(--accent-dentis-a),  var(--accent-dentis-b)); }
 
+    .project--full { grid-column: 1 / -1; }
+
+    .project-install {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      background: rgba(0,0,0,.35);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .65rem 1rem;
+      margin-bottom: 1.1rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: .85rem;
+    }
+
+    .project-install::before {
+      content: '$';
+      color: #6366f1;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .project-install code {
+      color: #a5b4fc;
+      letter-spacing: .01em;
+    }
+
+    .project-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .project-features span {
+      font-size: .75rem;
+      font-weight: 500;
+      color: var(--muted-light);
+      background: rgba(99,102,241,.07);
+      border: 1px solid rgba(99,102,241,.18);
+      padding: .2rem .65rem;
+      border-radius: 100px;
+    }
+
     .project-body { padding: 1.75rem; }
 
     .project-top {
@@ -1472,6 +1516,37 @@
           </div>
         </article>
 
+        <article class="project project--roboteam project--full">
+          <div class="project-accent"></div>
+          <div class="project-body">
+            <div class="project-top">
+              <h2>RoboTeam CLI</h2>
+              <div style="display:flex;gap:.4rem;align-items:center;">
+                <span class="badge badge--founder" data-i18n="work.badge.founder">Founder</span>
+                <span class="badge">npm</span>
+                <a href="https://github.com/adakadavra/agent" target="_blank" rel="noopener" class="project-url">github ↗</a>
+              </div>
+            </div>
+            <p data-i18n="cli.desc">
+              Terminal client for the RoboTeam AI agents. Type <code style="font-size:.85em;color:#a5b4fc;font-family:monospace">roboteam</code> and start working — agents respond with real-time streaming, read and edit your local files, and show a diff before applying any change.
+            </p>
+            <div class="project-install"><code>npm install -g roboteam</code></div>
+            <div class="project-features">
+              <span data-i18n="cli.f1">Interactive REPL</span>
+              <span data-i18n="cli.f2">File editing + diff preview</span>
+              <span data-i18n="cli.f3">Background tasks (&amp;)</span>
+              <span data-i18n="cli.f4">AI commit generator</span>
+              <span data-i18n="cli.f5">Code review via pipe</span>
+              <span data-i18n="cli.f6">10 specialized agents</span>
+              <span data-i18n="cli.f7">Context compression</span>
+              <span data-i18n="cli.f8">Permission system</span>
+            </div>
+            <ul class="tags">
+              <li>TypeScript · Node.js</li><li>AWS Lambda</li><li>Cognito</li><li>Streaming SSE</li><li>API Gateway</li>
+            </ul>
+          </div>
+        </article>
+
       </div>
     </section>
 
@@ -2018,6 +2093,15 @@
         'work.sub':          'Personal products I built and run alongside my professional work — my code, my servers, my vision.',
         'work.badge.founder':'Founder',
         'roboteam.desc':     'Your team of AI agents working for you 24/7. 9 specialized agents — from secretary to trader — automating your business via Telegram, WhatsApp and Slack.',
+        'cli.desc':          'Terminal client for the RoboTeam AI agents. Real-time streaming, file editing with diff preview, background tasks and AI-powered git commits — all from the shell.',
+        'cli.f1':            'Interactive REPL',
+        'cli.f2':            'File editing + diff preview',
+        'cli.f3':            'Background tasks (&)',
+        'cli.f4':            'AI commit generator',
+        'cli.f5':            'Code review via pipe',
+        'cli.f6':            '10 specialized agents',
+        'cli.f7':            'Context compression',
+        'cli.f8':            'Permission system',
         'dentis.desc':       'Multi-tenant SaaS for dental clinic management. 9 hexagonal Maven modules — scheduling, digital clinical records with interactive odontogram, billing, document management and an AI clinical assistant. RAG over clinic documents powered by Amazon Bedrock Nova Pro, with real-time PubMed search, drug interaction checks (RxNorm), ICD-10 lookup and dosage calculation — streamed live via SSE.',
         'stat.years':        'years building',
         'stat.products':     'live products',
@@ -2107,6 +2191,15 @@
         'work.sub':          'Productos personales que construyo y gestiono en paralelo a mi trabajo profesional — mi código, mis servidores, mi visión.',
         'work.badge.founder':'Founder',
         'roboteam.desc':     'Tu equipo de agentes IA trabajando por ti las 24h. 9 agentes especializados — de secretaria a trader — automatizando tu negocio por Telegram, WhatsApp y Slack.',
+        'cli.desc':          'Cliente de terminal para los agentes IA de RoboTeam. Streaming en tiempo real, edición de archivos con vista previa de diff, tareas en segundo plano y commits generados por IA — todo desde la shell.',
+        'cli.f1':            'REPL interactivo',
+        'cli.f2':            'Edición de archivos + diff',
+        'cli.f3':            'Tareas en segundo plano (&)',
+        'cli.f4':            'Commits generados por IA',
+        'cli.f5':            'Code review por pipe',
+        'cli.f6':            '10 agentes especializados',
+        'cli.f7':            'Compresión de contexto',
+        'cli.f8':            'Sistema de permisos',
         'dentis.desc':       'SaaS multi-tenant para gestión de clínicas dentales. 9 módulos Maven hexagonales — agenda, historia clínica digital con odontograma interactivo, facturación, gestión documental y asistente IA clínico. RAG sobre documentos de la clínica con Amazon Bedrock Nova Pro, búsqueda PubMed en tiempo real, validación de fármacos (RxNorm), ICD-10 y cálculo de dosis — todo en streaming SSE.',
         'stat.years':        'años construyendo',
         'stat.products':     'productos en producción',
