@@ -918,6 +918,253 @@
 
     .cta-button:hover { opacity: .85; transform: translateY(-1px); }
 
+    /* ── AUDIT FORM ─────────────────── */
+    #audit {
+      border-bottom: 1px solid var(--border);
+    }
+    .audit-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .audit-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .audit-header h3 {
+      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -.04em;
+      line-height: 1.1;
+      margin-bottom: .85rem;
+    }
+    .audit-header h3 span { color: #6366f1; }
+    .audit-header p {
+      color: var(--muted-light);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 1.5rem;
+    }
+    .audit-perks {
+      display: flex;
+      justify-content: center;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+    .audit-perk {
+      font-size: .78rem;
+      font-weight: 600;
+      color: #6366f1;
+      background: rgba(99,102,241,.08);
+      border: 1px solid rgba(99,102,241,.2);
+      border-radius: 100px;
+      padding: .3rem .85rem;
+      letter-spacing: .03em;
+    }
+
+    /* Form card */
+    .audit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.25rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .audit-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #6366f1, #a855f7);
+    }
+
+    /* Progress */
+    .audit-progress {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: 2rem;
+    }
+    .audit-prog-step {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--muted);
+      transition: color .3s;
+    }
+    .audit-prog-step.active { color: #6366f1; }
+    .audit-prog-step.done { color: #a855f7; }
+    .audit-prog-num {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid currentColor;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .72rem;
+      transition: background .3s, border-color .3s;
+    }
+    .audit-prog-step.active .audit-prog-num,
+    .audit-prog-step.done .audit-prog-num {
+      background: #6366f1;
+      border-color: #6366f1;
+      color: #fff;
+    }
+    .audit-prog-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Steps */
+    .audit-step { display: none; }
+    .audit-step.active { display: block; }
+
+    .audit-step-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: 1.5rem;
+    }
+    .audit-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .audit-field-full { grid-column: 1 / -1; }
+    .audit-label {
+      display: block;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--muted-light);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: .45rem;
+    }
+    .audit-input,
+    .audit-select,
+    .audit-textarea {
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--fg);
+      font-family: var(--font);
+      font-size: .9rem;
+      padding: .7rem .95rem;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      appearance: none;
+    }
+    .audit-input::placeholder,
+    .audit-textarea::placeholder { color: var(--muted); }
+    .audit-input:focus,
+    .audit-select:focus,
+    .audit-textarea:focus {
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99,102,241,.12);
+    }
+    .audit-select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .9rem center;
+      padding-right: 2.25rem;
+    }
+    .audit-select option { background: #1a1a1a; color: var(--fg); }
+    .audit-textarea { resize: vertical; min-height: 100px; }
+
+    /* Chips multiselect */
+    .audit-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: .5rem;
+    }
+    .audit-chip {
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--muted-light);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: .35rem .9rem;
+      cursor: pointer;
+      transition: border-color .2s, color .2s, background .2s;
+      user-select: none;
+    }
+    .audit-chip.selected {
+      border-color: #6366f1;
+      color: #a5b4fc;
+      background: rgba(99,102,241,.1);
+    }
+
+    /* Form nav */
+    .audit-form-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      gap: 1rem;
+    }
+    .audit-btn-back {
+      font-family: var(--font);
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--muted-light);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .65rem 0;
+      transition: color .2s;
+    }
+    .audit-btn-back:hover { color: var(--fg); }
+    .audit-btn-next,
+    .audit-btn-submit {
+      font-family: var(--font);
+      font-size: .9rem;
+      font-weight: 700;
+      color: #fff;
+      background: #6366f1;
+      border: none;
+      border-radius: 8px;
+      padding: .75rem 1.75rem;
+      cursor: pointer;
+      transition: opacity .2s, transform .2s;
+    }
+    .audit-btn-next:hover,
+    .audit-btn-submit:hover { opacity: .85; transform: translateY(-1px); }
+    .audit-btn-submit { background: linear-gradient(135deg, #6366f1, #a855f7); }
+
+    /* Success */
+    .audit-success {
+      display: none;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .audit-success-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .audit-success h4 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: .6rem;
+    }
+    .audit-success p {
+      color: var(--muted-light);
+      font-size: .95rem;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 600px) {
+      .audit-card { padding: 1.5rem 1.25rem; }
+      .audit-fields { grid-template-columns: 1fr; }
+      .audit-field-full { grid-column: 1; }
+    }
+
     /* ── FOOTER ─────────────────────── */
     footer {
       max-width: 860px;
@@ -1349,7 +1596,7 @@
           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
       </button>
-      <a href="mailto:jergesbello@roboteam.es" class="nav-cta" data-i18n="nav.cta">Get in touch</a>
+      <a href="#audit" class="nav-cta" data-i18n="nav.cta">Get in touch</a>
     </div>
   </nav>
 
@@ -1413,7 +1660,7 @@
       <p class="section-label" data-i18n="builds.label">What I build</p>
       <div class="builds-grid">
 
-        <a class="build-card-link" href="#contact">
+        <a class="build-card-link" href="#audit">
         <div class="build-card">
           <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3c-3 4-3 14 0 18"/><path d="M12 3c3 4 3 14 0 18"/><line x1="3.5" y1="9" x2="20.5" y2="9"/><line x1="3.5" y1="15" x2="20.5" y2="15"/></svg></div>
           <h3 data-i18n="builds.webs.title">Webs</h3>
@@ -1441,7 +1688,7 @@
         </div>
         </a>
 
-        <a class="build-card-link" href="#contact">
+        <a class="build-card-link" href="#audit">
         <div class="build-card">
           <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg></div>
           <h3 data-i18n="builds.auto.title">Automation</h3>
@@ -1449,7 +1696,7 @@
         </div>
         </a>
 
-        <a class="build-card-link" href="#contact">
+        <a class="build-card-link" href="#audit">
         <div class="build-card">
           <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M5 6.5h14"/><path d="M5 17.5h14"/><line x1="9.5" y1="20" x2="14.5" y2="20"/><rect x="8" y="9.5" width="3" height="3" rx=".75"/><rect x="13" y="9.5" width="3" height="3" rx=".75"/><line x1="8" y1="14.5" x2="16" y2="14.5"/></svg></div>
           <h3 data-i18n="builds.mobile.title">Mobile</h3>
@@ -1607,7 +1854,7 @@
             <li data-i18n="svc.arch.i4">Weekly sessions + async support</li>
           </ul>
           <div class="svc-ideal" data-i18n="svc.arch.ideal">Ideal for: CTOs · Tech leads · Scaling teams</div>
-          <a href="mailto:jergesbello@roboteam.es" class="svc-cta" data-i18n="svc.cta">Let's talk →</a>
+          <a href="#audit" class="svc-cta" data-i18n="svc.cta">Let's talk →</a>
         </div>
 
         <!-- AI Agents & Automation (featured) -->
@@ -1636,7 +1883,7 @@
             <li data-i18n="svc.ai.i4">Trained on your documents and data</li>
           </ul>
           <div class="svc-ideal" data-i18n="svc.ai.ideal">Ideal for: Businesses that want to scale without hiring</div>
-          <a href="mailto:jergesbello@roboteam.es" class="svc-cta" data-i18n="svc.cta">Let's talk →</a>
+          <a href="#audit" class="svc-cta" data-i18n="svc.cta">Let's talk →</a>
         </div>
 
         <!-- Full Product Development -->
@@ -1657,7 +1904,7 @@
             <li data-i18n="svc.build.i4">External integrations and third-party APIs</li>
           </ul>
           <div class="svc-ideal" data-i18n="svc.build.ideal">Ideal for: Founders · Startups · New products</div>
-          <a href="mailto:jergesbello@roboteam.es" class="svc-cta" data-i18n="svc.cta">Let's talk →</a>
+          <a href="#audit" class="svc-cta" data-i18n="svc.cta">Let's talk →</a>
         </div>
 
       </div>
@@ -2061,6 +2308,110 @@
       </div>
     </section>
 
+    <!-- FREE AUDIT -->
+    <section id="audit">
+      <div class="audit-inner">
+        <div class="audit-header">
+          <p class="section-label" data-i18n="audit.label">Free audit</p>
+          <h3><span data-i18n="audit.h1">Tell me about</span><br /><span data-i18n="audit.h2">your project</span></h3>
+          <p data-i18n="audit.sub">I'll analyze your current situation and come back with 3 concrete automations you can implement right now.</p>
+          <div class="audit-perks">
+            <span class="audit-perk" data-i18n="audit.perk1">No commitment</span>
+            <span class="audit-perk" data-i18n="audit.perk2">Response in 48h</span>
+            <span class="audit-perk" data-i18n="audit.perk3">Real analysis, not a sales pitch</span>
+          </div>
+        </div>
+
+        <div class="audit-card">
+          <!-- Progress -->
+          <div class="audit-progress">
+            <div class="audit-prog-step active" id="prog-1">
+              <div class="audit-prog-num">1</div>
+              <span data-i18n="audit.prog1">About you</span>
+            </div>
+            <div class="audit-prog-line"></div>
+            <div class="audit-prog-step" id="prog-2">
+              <div class="audit-prog-num">2</div>
+              <span data-i18n="audit.prog2">Your project</span>
+            </div>
+          </div>
+
+          <!-- STEP 1 -->
+          <div class="audit-step active" id="audit-step-1">
+            <p class="audit-step-title" data-i18n="audit.s1.title">Who are you?</p>
+            <div class="audit-fields">
+              <div>
+                <label class="audit-label" data-i18n="audit.f.name">Name *</label>
+                <input class="audit-input" id="a-name" type="text" data-i18n-ph="audit.ph.name" placeholder="Nombre completo" required />
+              </div>
+              <div>
+                <label class="audit-label" data-i18n="audit.f.email">Email *</label>
+                <input class="audit-input" id="a-email" type="email" data-i18n-ph="audit.ph.email" placeholder="tu@empresa.com" required />
+              </div>
+              <div>
+                <label class="audit-label" data-i18n="audit.f.company">Company / Project</label>
+                <input class="audit-input" id="a-company" type="text" data-i18n-ph="audit.ph.company" placeholder="Nombre de empresa o proyecto" />
+              </div>
+              <div>
+                <label class="audit-label" data-i18n="audit.f.web">Website</label>
+                <input class="audit-input" id="a-web" type="url" placeholder="https://" />
+              </div>
+            </div>
+            <div class="audit-form-nav">
+              <span></span>
+              <button class="audit-btn-next" onclick="auditNext()" data-i18n="audit.next">Continue →</button>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="audit-step" id="audit-step-2">
+            <p class="audit-step-title" data-i18n="audit.s2.title">Your project</p>
+            <div class="audit-fields">
+              <div class="audit-field-full">
+                <label class="audit-label" data-i18n="audit.f.type">Type of business</label>
+                <select class="audit-select" id="a-type">
+                  <option value="" data-i18n="audit.type.placeholder">Select one…</option>
+                  <option value="ecommerce" data-i18n="audit.type.ecom">E-commerce / Online store</option>
+                  <option value="services" data-i18n="audit.type.svc">Professional services</option>
+                  <option value="saas" data-i18n="audit.type.saas">SaaS / Software product</option>
+                  <option value="startup" data-i18n="audit.type.startup">Startup</option>
+                  <option value="agency" data-i18n="audit.type.agency">Agency</option>
+                  <option value="other" data-i18n="audit.type.other">Other</option>
+                </select>
+              </div>
+              <div class="audit-field-full">
+                <label class="audit-label" data-i18n="audit.f.needs">What do you want to improve? <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(select all that apply)</span></label>
+                <div class="audit-chips" id="audit-chips">
+                  <span class="audit-chip" data-val="automate" data-i18n="audit.chip.automate" onclick="auditChip(this)">Automate repetitive tasks</span>
+                  <span class="audit-chip" data-val="ai-support" data-i18n="audit.chip.ai" onclick="auditChip(this)">AI customer support</span>
+                  <span class="audit-chip" data-val="integrations" data-i18n="audit.chip.int" onclick="auditChip(this)">Tool integrations</span>
+                  <span class="audit-chip" data-val="backend" data-i18n="audit.chip.back" onclick="auditChip(this)">Backend / APIs</span>
+                  <span class="audit-chip" data-val="web-app" data-i18n="audit.chip.web" onclick="auditChip(this)">Web or mobile app</span>
+                  <span class="audit-chip" data-val="architecture" data-i18n="audit.chip.arch" onclick="auditChip(this)">Tech architecture</span>
+                  <span class="audit-chip" data-val="data" data-i18n="audit.chip.data" onclick="auditChip(this)">Data & reporting</span>
+                </div>
+              </div>
+              <div class="audit-field-full">
+                <label class="audit-label" data-i18n="audit.f.desc">Tell me your situation *</label>
+                <textarea class="audit-textarea" id="a-desc" data-i18n-ph="audit.ph.desc" placeholder="Cuéntame brevemente qué haces, qué procesos son más lentos o repetitivos, y qué te gustaría que funcionase solo." required></textarea>
+              </div>
+            </div>
+            <div class="audit-form-nav">
+              <button class="audit-btn-back" onclick="auditBack()" data-i18n="audit.back">← Back</button>
+              <button class="audit-btn-submit" id="audit-submit" onclick="auditSubmit()" data-i18n="audit.submit">Send & request audit →</button>
+            </div>
+          </div>
+
+          <!-- SUCCESS -->
+          <div class="audit-success" id="audit-success">
+            <div class="audit-success-icon">✅</div>
+            <h4 data-i18n="audit.ok.title">Request received!</h4>
+            <p data-i18n="audit.ok.sub">I'll review your project and send you a personalised analysis within 48 hours. Check your inbox — and your spam just in case.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact">
       <div class="contact-inner">
@@ -2186,6 +2537,47 @@
         'contact.h1':        'Have a project',
         'contact.h2':        'in mind?',
         'contact.sub':       "Let's build something together.",
+        'audit.label':       'Free audit',
+        'audit.h1':          'Tell me about',
+        'audit.h2':          'your project',
+        'audit.sub':         "I'll analyze your current situation and come back with 3 concrete automations you can implement right now.",
+        'audit.perk1':       'No commitment',
+        'audit.perk2':       'Response in 48h',
+        'audit.perk3':       'Real analysis, not a sales pitch',
+        'audit.prog1':       'About you',
+        'audit.prog2':       'Your project',
+        'audit.s1.title':    'Who are you?',
+        'audit.f.name':      'Name *',
+        'audit.ph.name':     'Full name',
+        'audit.f.email':     'Email *',
+        'audit.ph.email':    'you@company.com',
+        'audit.f.company':   'Company / Project',
+        'audit.ph.company':  'Company or project name',
+        'audit.f.web':       'Website',
+        'audit.next':        'Continue →',
+        'audit.s2.title':    'Your project',
+        'audit.f.type':      'Type of business',
+        'audit.type.placeholder': 'Select one…',
+        'audit.type.ecom':   'E-commerce / Online store',
+        'audit.type.svc':    'Professional services',
+        'audit.type.saas':   'SaaS / Software product',
+        'audit.type.startup':'Startup',
+        'audit.type.agency': 'Agency',
+        'audit.type.other':  'Other',
+        'audit.f.needs':     'What do you want to improve?',
+        'audit.chip.automate':'Automate repetitive tasks',
+        'audit.chip.ai':     'AI customer support',
+        'audit.chip.int':    'Tool integrations',
+        'audit.chip.back':   'Backend / APIs',
+        'audit.chip.web':    'Web or mobile app',
+        'audit.chip.arch':   'Tech architecture',
+        'audit.chip.data':   'Data & reporting',
+        'audit.f.desc':      'Tell me your situation *',
+        'audit.ph.desc':     'Tell me briefly what you do, which processes are slowest or most repetitive, and what you would like to run on autopilot.',
+        'audit.back':        '← Back',
+        'audit.submit':      'Send & request audit →',
+        'audit.ok.title':    'Request received!',
+        'audit.ok.sub':      "I'll review your project and send you a personalised analysis within 48 hours. Check your inbox — and your spam just in case.",
         'footer.copy':       '© 2026 Jerges Bello',
       },
       es: {
@@ -2286,6 +2678,47 @@
         'contact.h1':        '¿Tienes un proyecto',
         'contact.h2':        'en mente?',
         'contact.sub':       'Construyamos algo juntos.',
+        'audit.label':       'Auditoría gratuita',
+        'audit.h1':          'Cuéntame tu',
+        'audit.h2':          'proyecto',
+        'audit.sub':         'Analizaré tu situación actual y te daré 3 automatizaciones concretas que puedes implementar ahora mismo.',
+        'audit.perk1':       'Sin compromiso',
+        'audit.perk2':       'Respuesta en 48h',
+        'audit.perk3':       'Análisis real, no un pitch de ventas',
+        'audit.prog1':       'Sobre ti',
+        'audit.prog2':       'Tu proyecto',
+        'audit.s1.title':    '¿Quién eres?',
+        'audit.f.name':      'Nombre *',
+        'audit.ph.name':     'Nombre completo',
+        'audit.f.email':     'Email *',
+        'audit.ph.email':    'tu@empresa.com',
+        'audit.f.company':   'Empresa / Proyecto',
+        'audit.ph.company':  'Nombre de empresa o proyecto',
+        'audit.f.web':       'Sitio web',
+        'audit.next':        'Continuar →',
+        'audit.s2.title':    'Tu proyecto',
+        'audit.f.type':      'Tipo de negocio',
+        'audit.type.placeholder': 'Selecciona uno…',
+        'audit.type.ecom':   'E-commerce / Tienda online',
+        'audit.type.svc':    'Servicios profesionales',
+        'audit.type.saas':   'SaaS / Producto software',
+        'audit.type.startup':'Startup',
+        'audit.type.agency': 'Agencia',
+        'audit.type.other':  'Otro',
+        'audit.f.needs':     '¿Qué quieres mejorar?',
+        'audit.chip.automate':'Automatizar tareas repetitivas',
+        'audit.chip.ai':     'Atención al cliente con IA',
+        'audit.chip.int':    'Integraciones entre herramientas',
+        'audit.chip.back':   'Backend / APIs',
+        'audit.chip.web':    'App web o móvil',
+        'audit.chip.arch':   'Arquitectura técnica',
+        'audit.chip.data':   'Datos e informes',
+        'audit.f.desc':      'Cuéntame tu situación *',
+        'audit.ph.desc':     'Cuéntame brevemente qué haces, qué procesos son más lentos o repetitivos, y qué te gustaría que funcionase solo.',
+        'audit.back':        '← Volver',
+        'audit.submit':      'Enviar y solicitar auditoría →',
+        'audit.ok.title':    '¡Solicitud recibida!',
+        'audit.ok.sub':      'Revisaré tu proyecto y te enviaré un análisis personalizado en 48 horas. Revisa tu bandeja de entrada, y el spam por si acaso.',
         'footer.copy':       '© 2026 Jerges Bello',
       },
     };
@@ -2295,6 +2728,10 @@
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
         if (translations[lang][key] !== undefined) el.textContent = translations[lang][key];
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.dataset.i18nPh;
+        if (translations[lang][key] !== undefined) el.placeholder = translations[lang][key];
       });
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
@@ -2450,6 +2887,89 @@
         img.removeAttribute('data-fallback');
       } else {
         img.style.display = 'none';
+      }
+    }
+
+    /* ── AUDIT FORM ── */
+    function auditChip(el) {
+      el.classList.toggle('selected');
+    }
+
+    function auditNext() {
+      const name  = document.getElementById('a-name').value.trim();
+      const email = document.getElementById('a-email').value.trim();
+      if (!name) { document.getElementById('a-name').focus(); return; }
+      if (!email || !/\S+@\S+\.\S+/.test(email)) { document.getElementById('a-email').focus(); return; }
+      document.getElementById('audit-step-1').classList.remove('active');
+      document.getElementById('audit-step-2').classList.add('active');
+      document.getElementById('prog-1').classList.remove('active');
+      document.getElementById('prog-1').classList.add('done');
+      document.getElementById('prog-2').classList.add('active');
+    }
+
+    function auditBack() {
+      document.getElementById('audit-step-2').classList.remove('active');
+      document.getElementById('audit-step-1').classList.add('active');
+      document.getElementById('prog-2').classList.remove('active');
+      document.getElementById('prog-1').classList.remove('done');
+      document.getElementById('prog-1').classList.add('active');
+    }
+
+    async function auditSubmit() {
+      const desc = document.getElementById('a-desc').value.trim();
+      if (!desc) { document.getElementById('a-desc').focus(); return; }
+
+      const chips = [...document.querySelectorAll('.audit-chip.selected')].map(c => c.dataset.val).join(', ');
+      const type  = document.getElementById('a-type').value;
+      const name  = document.getElementById('a-name').value.trim();
+      const email = document.getElementById('a-email').value.trim();
+      const company = document.getElementById('a-company').value.trim();
+      const web   = document.getElementById('a-web').value.trim();
+
+      const btn = document.getElementById('audit-submit');
+      btn.disabled = true;
+      btn.textContent = '⏳ Sending…';
+
+      const message = [
+        company ? `Company: ${company}` : '',
+        web ? `Website: ${web}` : '',
+        type ? `Business type: ${type}` : '',
+        chips ? `Needs: ${chips}` : '',
+        '',
+        desc
+      ].filter(Boolean).join('\n');
+
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/jergesbello@roboteam.es', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            _subject: `🔍 Free audit request — ${company || name}`,
+            message,
+            _captcha: 'false',
+            _template: 'table'
+          })
+        });
+        const data = await res.json();
+        if (data.success === 'true' || data.success === true) {
+          document.getElementById('audit-step-2').style.display = 'none';
+          document.querySelector('.audit-progress').style.display = 'none';
+          document.getElementById('audit-success').style.display = 'block';
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (e) {
+        btn.disabled = false;
+        btn.textContent = document.documentElement.lang === 'es'
+          ? 'Error — inténtalo de nuevo'
+          : 'Error — please try again';
+        setTimeout(() => {
+          btn.textContent = document.documentElement.lang === 'es'
+            ? 'Enviar y solicitar auditoría →'
+            : 'Send & request audit →';
+        }, 3000);
       }
     }
   </script>
