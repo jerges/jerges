@@ -292,33 +292,59 @@
     }
 
     .hero-chip {
+      --accent: #6366f1;
       display: inline-flex;
       align-items: center;
-      gap: .4rem;
+      gap: .45rem;
       font-size: .85rem;
       font-weight: 500;
-      color: var(--muted-light);
+      color: var(--fg);
       padding: .4rem 1rem;
       border-radius: 100px;
-      border: 1px solid var(--border-hover);
-      transition: color .2s, border-color .2s;
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+      background: color-mix(in srgb, var(--accent) 7%, transparent);
+      cursor: default;
+      transition: color .25s, border-color .25s, background .25s,
+                  transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
     }
 
-    .hero-chip--ai {
-      color: var(--fg);
-      font-weight: 600;
-      border: 1px solid transparent;
-      background:
-        linear-gradient(var(--bg), var(--bg)) padding-box,
-        linear-gradient(135deg, #6366f1, #a855f7, #ec4899) border-box;
+    /* Punto de color: da vida sin saturar el bloque */
+    .hero-chip::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 70%, transparent);
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1);
     }
+
+    .hero-chip:hover {
+      border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--accent) 65%, transparent);
+    }
+
+    .hero-chip:hover::before { transform: scale(1.5); }
+
+    /* El de IA lleva chispa propia en vez de punto */
+    .hero-chip--ai { font-weight: 600; }
+    .hero-chip--ai::before { display: none; }
 
     .chip-spark {
-      background: linear-gradient(135deg, #6366f1, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--accent);
       font-size: .75rem;
+      animation: spark-pulse 2.6s ease-in-out infinite;
+    }
+
+    @keyframes spark-pulse {
+      0%, 100% { opacity: 1;   transform: scale(1)   rotate(0deg); }
+      50%      { opacity: .55; transform: scale(1.25) rotate(90deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .chip-spark { animation: none; }
     }
 
     .scroll-cta {
@@ -436,23 +462,6 @@
 
     .build-card:hover::before { opacity: 1; }
 
-    .build-card--ai {
-      border-color: transparent;
-      background:
-        linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
-        linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%) border-box;
-      box-shadow: 0 0 40px rgba(99,102,241,.12);
-    }
-
-    .build-card--ai:hover { box-shadow: 0 0 65px rgba(99,102,241,.24); transform: translateY(-5px); }
-
-    .build-accent-bar {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
-    }
-
     /* Índice editorial en la esquina */
     .build-idx {
       position: absolute;
@@ -479,8 +488,6 @@
       color: var(--accent);
       transform: translateY(-2px) rotate(-6deg) scale(1.08);
     }
-    .ai-icon { color: transparent; } /* el degradado va dentro del SVG */
-    .build-card--ai:hover .ai-icon { transform: translateY(-2px) scale(1.08); }
 
     .build-card h3 {
       font-size: 1.05rem;
@@ -514,7 +521,7 @@
     }
     .build-proof b {
       font-weight: 700;
-      color: #a5b4fc;
+      color: var(--accent);
     }
     .build-proof i {
       display: inline-block;
@@ -965,6 +972,8 @@
     }
 
     .stack-item {
+      --accent: #6366f1;
+      position: relative;
       display: flex;
       align-items: center;
       gap: .6rem;
@@ -975,12 +984,52 @@
       font-size: .825rem;
       font-weight: 500;
       color: var(--muted-light);
-      transition: border-color .2s, color .2s;
+      overflow: hidden;
+      /* Una sola declaración: cubre hover y entrada, para que .fade-in no la pise */
+      transition: border-color .3s, color .3s, background .3s, box-shadow .35s,
+                  opacity .6s ease, transform .5s cubic-bezier(.16,1,.3,1);
     }
 
-    .stack-item:hover { border-color: var(--border-hover); color: var(--fg); }
-    .stack-icon { display: flex; }
+    /* Cada tecnología con su propio acento, en ciclo */
+    .stack-item:nth-child(5n+1) { --accent: #6366f1; }
+    .stack-item:nth-child(5n+2) { --accent: #06b6d4; }
+    .stack-item:nth-child(5n+3) { --accent: #a855f7; }
+    .stack-item:nth-child(5n+4) { --accent: #10b981; }
+    .stack-item:nth-child(5n+5) { --accent: #f59e0b; }
+
+    /* Entrada escalonada al entrar en pantalla */
+    .stack-reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition-delay: var(--sd, 0ms);
+    }
+    .stack-reveal.visible { opacity: 1; transform: none; }
+
+    .stack-item:hover {
+      color: var(--fg);
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+      background: color-mix(in srgb, var(--accent) 6%, var(--bg-card));
+      transform: translateY(-3px);
+      box-shadow: 0 10px 26px -14px color-mix(in srgb, var(--accent) 70%, transparent);
+      transition-delay: 0s; /* el retardo de entrada no debe frenar el hover */
+    }
+
+    .stack-icon {
+      display: flex;
+      color: var(--muted);
+      transition: color .3s, transform .45s cubic-bezier(.34,1.56,.64,1);
+    }
     .stack-icon svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    .stack-item:hover .stack-icon {
+      color: var(--accent);
+      transform: rotate(-8deg) scale(1.15);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stack-item, .stack-icon { transition: none; }
+      .stack-reveal { opacity: 1; transform: none; }
+    }
 
     /* ── CONTACT ────────────────────── */
     #contact { text-align: center; border-bottom: 1px solid var(--border); }
@@ -1522,6 +1571,7 @@
     }
 
     .svc-card {
+      --accent: #6366f1;
       position: relative;
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -1530,44 +1580,63 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      transition: border-color .25s, transform .25s, box-shadow .25s;
       overflow: hidden;
+      isolation: isolate;
+      /* Una sola declaración: hover y entrada juntos, sin que otra regla la pise */
+      transition: border-color .3s, box-shadow .35s,
+                  opacity .7s ease, transform .5s cubic-bezier(.16,1,.3,1);
     }
+
+    /* Mismo halo de acento que las tarjetas de "Qué construyo" */
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      z-index: -1;
+      background: radial-gradient(420px circle at 15% 0%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 70%);
+      opacity: 0;
+      transition: opacity .4s;
+    }
+
+    /* Entrada escalonada */
+    .svc-reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition-delay: var(--sd, 0ms);
+    }
+    .svc-reveal.visible { opacity: 1; transform: none; }
 
     .svc-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,.35);
+      border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
+      transform: translateY(-5px);
+      box-shadow: 0 14px 40px -18px color-mix(in srgb, var(--accent) 55%, transparent);
+      transition-delay: 0s;
     }
 
-    .svc-card--featured {
-      border-color: transparent;
-      background:
-        linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
-        linear-gradient(135deg, #6366f1, #a855f7, #ec4899) border-box;
-      box-shadow: 0 0 36px rgba(99,102,241,.1);
-    }
+    .svc-card:hover::before { opacity: 1; }
 
-    .svc-card--featured:hover {
-      box-shadow: 0 0 56px rgba(99,102,241,.22);
-    }
-
-    .svc-top-bar {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+    @media (prefers-reduced-motion: reduce) {
+      .svc-card, .svc-icon { transition: none; }
+      .svc-reveal { opacity: 1; transform: none; }
     }
 
     .svc-icon {
       width: 40px; height: 40px;
       border-radius: 10px;
-      background: rgba(99,102,241,.1);
-      border: 1px solid rgba(99,102,241,.18);
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+      color: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      transition: transform .45s cubic-bezier(.34,1.56,.64,1), background .3s, border-color .3s;
+    }
+
+    .svc-card:hover .svc-icon {
+      transform: translateY(-2px) rotate(-6deg) scale(1.08);
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      border-color: color-mix(in srgb, var(--accent) 38%, transparent);
     }
 
     .svc-icon svg { width: 20px; height: 20px; }
@@ -1604,7 +1673,7 @@
 
     .svc-includes li::before {
       content: '→';
-      color: #6366f1;
+      color: var(--accent);
       font-size: .75rem;
       flex-shrink: 0;
       margin-top: .05rem;
@@ -1626,7 +1695,7 @@
       gap: .4rem;
       font-size: .82rem;
       font-weight: 600;
-      color: #6366f1;
+      color: var(--accent);
       text-decoration: none;
       transition: gap .2s;
     }
@@ -1715,14 +1784,14 @@
         <span class="gradient-text" data-i18n="hero.h1b">in production.</span>
       </p>
       <div class="hero-chips ha" style="--d:280ms">
-        <span class="hero-chip" data-i18n="chip.webs">Webs</span>
-        <span class="hero-chip" data-i18n="chip.apps">Apps</span>
-        <span class="hero-chip" data-i18n="chip.mobile">Mobile</span>
-        <span class="hero-chip hero-chip--ai">
+        <span class="hero-chip" style="--accent:#6366f1" data-i18n="chip.webs">Webs</span>
+        <span class="hero-chip" style="--accent:#06b6d4" data-i18n="chip.apps">Apps</span>
+        <span class="hero-chip" style="--accent:#10b981" data-i18n="chip.mobile">Mobile</span>
+        <span class="hero-chip hero-chip--ai" style="--accent:#a855f7">
           <span class="chip-spark">✦</span>
           <span data-i18n="chip.ai">AI Agents</span>
         </span>
-        <span class="hero-chip" data-i18n="chip.automation">Automation</span>
+        <span class="hero-chip" style="--accent:#f59e0b" data-i18n="chip.automation">Automation</span>
       </div>
       <p class="hero-sub ha" style="--d:360ms" data-i18n="hero.sub">
         Backend systems, AI agents and automation tools — from idea to production.
@@ -1730,8 +1799,8 @@
 
       <div class="hero-stats ha" style="--d:440ms">
         <div class="stat">
-          <span class="stat-n" data-count="18" data-suffix="+">18+</span>
-          <span class="stat-l" data-i18n="stat.years">years building</span>
+          <span class="stat-n">2008</span>
+          <span class="stat-l" data-i18n="stat.years">working since</span>
         </div>
         <div class="stat">
           <span class="stat-n" data-count="2">2</span>
@@ -1779,10 +1848,9 @@
         </a>
 
         <a class="build-card-link" data-span="6" href="#work">
-        <div class="build-card build-card--ai" style="--accent:#a855f7">
-          <div class="build-accent-bar"></div>
+        <div class="build-card" style="--accent:#a855f7">
           <span class="build-idx">03</span>
-          <div class="build-icon ai-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><linearGradient id="ai-g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#a855f7"/></linearGradient></defs><circle cx="12" cy="5" r="2" stroke="url(#ai-g)" fill="none"/><circle cx="5" cy="17" r="2" stroke="url(#ai-g)" fill="none"/><circle cx="19" cy="17" r="2" stroke="url(#ai-g)" fill="none"/><circle cx="12" cy="17" r="2" stroke="url(#ai-g)" fill="none"/><line x1="12" y1="7" x2="12" y2="15" stroke="url(#ai-g)"/><line x1="10.8" y1="6.4" x2="6.2" y2="15.3" stroke="url(#ai-g)"/><line x1="13.2" y1="6.4" x2="17.8" y2="15.3" stroke="url(#ai-g)"/><line x1="7" y1="17" x2="10" y2="17" stroke="url(#ai-g)"/><line x1="14" y1="17" x2="17" y2="17" stroke="url(#ai-g)"/></svg></div>
+          <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="17" r="2"/><circle cx="19" cy="17" r="2"/><circle cx="12" cy="17" r="2"/><line x1="12" y1="7" x2="12" y2="15"/><line x1="10.8" y1="6.4" x2="6.2" y2="15.3"/><line x1="13.2" y1="6.4" x2="17.8" y2="15.3"/><line x1="7" y1="17" x2="10" y2="17"/><line x1="14" y1="17" x2="17" y2="17"/></svg></div>
           <h3 data-i18n="builds.ai.title">AI Agents</h3>
           <p data-i18n="builds.ai.desc">9 specialized agents — from secretary to trader — running your business around the clock. They respond, execute and automate via Telegram, WhatsApp and Slack. You sleep, they work.</p>
           <div class="build-proof">
@@ -1949,9 +2017,9 @@
       <div class="services-grid">
 
         <!-- Architecture & Consulting -->
-        <div class="svc-card">
+        <div class="svc-card" style="--accent:#6366f1">
           <div class="svc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12,2 14.6,3.5 14.6,6.5 12,8 9.4,6.5 9.4,3.5"/>
               <polygon points="5.5,13.5 8.1,15 8.1,18 5.5,19.5 2.9,18 2.9,15"/>
               <polygon points="18.5,13.5 21.1,15 21.1,18 18.5,19.5 15.9,18 15.9,15"/>
@@ -1971,21 +2039,19 @@
           <a href="#audit" class="svc-cta" data-i18n="svc.cta">Let's talk →</a>
         </div>
 
-        <!-- AI Agents & Automation (featured) -->
-        <div class="svc-card svc-card--featured">
-          <div class="svc-top-bar"></div>
-          <div class="svc-icon" style="background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.3)">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <defs><linearGradient id="svc-ai-g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#a855f7"/></linearGradient></defs>
-              <circle cx="12" cy="5" r="2" stroke="url(#svc-ai-g)" fill="none"/>
-              <circle cx="5" cy="17" r="2" stroke="url(#svc-ai-g)" fill="none"/>
-              <circle cx="19" cy="17" r="2" stroke="url(#svc-ai-g)" fill="none"/>
-              <circle cx="12" cy="17" r="2" stroke="url(#svc-ai-g)" fill="none"/>
-              <line x1="12" y1="7" x2="12" y2="15" stroke="url(#svc-ai-g)"/>
-              <line x1="10.8" y1="6.4" x2="6.2" y2="15.3" stroke="url(#svc-ai-g)"/>
-              <line x1="13.2" y1="6.4" x2="17.8" y2="15.3" stroke="url(#svc-ai-g)"/>
-              <line x1="7" y1="17" x2="10" y2="17" stroke="url(#svc-ai-g)"/>
-              <line x1="14" y1="17" x2="17" y2="17" stroke="url(#svc-ai-g)"/>
+        <!-- AI Agents & Automation -->
+        <div class="svc-card" style="--accent:#a855f7">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="5" r="2"/>
+              <circle cx="5" cy="17" r="2"/>
+              <circle cx="19" cy="17" r="2"/>
+              <circle cx="12" cy="17" r="2"/>
+              <line x1="12" y1="7" x2="12" y2="15"/>
+              <line x1="10.8" y1="6.4" x2="6.2" y2="15.3"/>
+              <line x1="13.2" y1="6.4" x2="17.8" y2="15.3"/>
+              <line x1="7" y1="17" x2="10" y2="17"/>
+              <line x1="14" y1="17" x2="17" y2="17"/>
             </svg>
           </div>
           <div class="svc-title" data-i18n="svc.ai.title">AI Agents &amp; Automation</div>
@@ -2001,9 +2067,9 @@
         </div>
 
         <!-- Full Product Development -->
-        <div class="svc-card">
+        <div class="svc-card" style="--accent:#10b981">
           <div class="svc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="1 4 1 10 7 10"/>
               <polyline points="23 20 23 14 17 14"/>
               <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
@@ -2626,7 +2692,7 @@
         'cli.f7':            'Context compression',
         'cli.f8':            'Permission system',
         'dentis.desc':       'Multi-tenant SaaS for dental clinic management. 9 hexagonal Maven modules — scheduling, digital clinical records with interactive odontogram, billing, document management and an AI clinical assistant. RAG over clinic documents powered by Amazon Bedrock Nova Pro, with real-time PubMed search, drug interaction checks (RxNorm), ICD-10 lookup and dosage calculation — streamed live via SSE.',
-        'stat.years':        'years building',
+        'stat.years':        'working since',
         'stat.products':     'live products',
         'stat.agents':       'AI agents active',
         'stat.companies':    'enterprise teams led',
@@ -2769,7 +2835,7 @@
         'cli.f7':            'Compresión de contexto',
         'cli.f8':            'Sistema de permisos',
         'dentis.desc':       'SaaS multi-tenant para gestión de clínicas dentales. 9 módulos Maven hexagonales — agenda, historia clínica digital con odontograma interactivo, facturación, gestión documental y asistente IA clínico. RAG sobre documentos de la clínica con Amazon Bedrock Nova Pro, búsqueda PubMed en tiempo real, validación de fármacos (RxNorm), ICD-10 y cálculo de dosis — todo en streaming SSE.',
-        'stat.years':        'años construyendo',
+        'stat.years':        'trabajando desde',
         'stat.products':     'productos en producción',
         'stat.agents':       'agentes IA activos',
         'stat.companies':    'equipos enterprise liderados',
@@ -2931,7 +2997,7 @@
         entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
         { threshold: 0.1 }
       );
-      document.querySelectorAll('section:not(#hero), .project, .stack-item')
+      document.querySelectorAll('section:not(#hero), .project')
         .forEach(el => { el.classList.add('fade-in'); observer.observe(el); });
 
       /* Las tarjetas de "Qué construyo" entran escalonadas, una detrás de otra */
@@ -2948,6 +3014,27 @@
         el.classList.add('build-reveal');
         el.style.setProperty('--rd', (i * 90) + 'ms');
         buildObs.observe(el);
+      });
+
+      /* Servicios y stack entran igual de escalonados */
+      const staggerObs = new IntersectionObserver(
+        entries => entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            staggerObs.unobserve(e.target);
+          }
+        }),
+        { threshold: 0.15 }
+      );
+      document.querySelectorAll('.stack-item').forEach((el, i) => {
+        el.classList.add('stack-reveal');
+        el.style.setProperty('--sd', (i * 55) + 'ms');
+        staggerObs.observe(el);
+      });
+      document.querySelectorAll('.services-grid .svc-card').forEach((el, i) => {
+        el.classList.add('svc-reveal');
+        el.style.setProperty('--sd', (i * 110) + 'ms');
+        staggerObs.observe(el);
       });
     });
 
