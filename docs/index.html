@@ -375,6 +375,14 @@
       line-height: 1;
     }
 
+    /* Unidad junto a la cifra: acompaña sin competir con ella */
+    .stat-unit {
+      font-size: .5em;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      color: var(--muted-light);
+    }
+
     .stat-l {
       font-size: .72rem;
       font-weight: 500;
@@ -1799,8 +1807,8 @@
 
       <div class="hero-stats ha" style="--d:440ms">
         <div class="stat">
-          <span class="stat-n" data-since="2008">18</span>
-          <span class="stat-l" data-i18n="stat.years">years since 2008</span>
+          <span class="stat-n"><span data-since="2008">18</span> <span class="stat-unit" data-i18n="stat.years.unit">years</span></span>
+          <span class="stat-l" data-i18n="stat.years">(since 2008)</span>
         </div>
         <div class="stat">
           <span class="stat-n" data-count="2">2</span>
@@ -2692,7 +2700,8 @@
         'cli.f7':            'Context compression',
         'cli.f8':            'Permission system',
         'dentis.desc':       'Multi-tenant SaaS for dental clinic management. 9 hexagonal Maven modules — scheduling, digital clinical records with interactive odontogram, billing, document management and an AI clinical assistant. RAG over clinic documents powered by Amazon Bedrock Nova Pro, with real-time PubMed search, drug interaction checks (RxNorm), ICD-10 lookup and dosage calculation — streamed live via SSE.',
-        'stat.years':        'years since 2008',
+        'stat.years':        '(since 2008)',
+        'stat.years.unit':   'years',
         'stat.products':     'live products',
         'stat.agents':       'AI agents active',
         'stat.companies':    'enterprise teams led',
@@ -2835,7 +2844,8 @@
         'cli.f7':            'Compresión de contexto',
         'cli.f8':            'Sistema de permisos',
         'dentis.desc':       'SaaS multi-tenant para gestión de clínicas dentales. 9 módulos Maven hexagonales — agenda, historia clínica digital con odontograma interactivo, facturación, gestión documental y asistente IA clínico. RAG sobre documentos de la clínica con Amazon Bedrock Nova Pro, búsqueda PubMed en tiempo real, validación de fármacos (RxNorm), ICD-10 y cálculo de dosis — todo en streaming SSE.',
-        'stat.years':        'años desde 2008',
+        'stat.years':        '(desde 2008)',
+        'stat.years.unit':   'años',
         'stat.products':     'productos en producción',
         'stat.agents':       'agentes IA activos',
         'stat.companies':    'equipos enterprise liderados',
