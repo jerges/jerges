@@ -235,7 +235,81 @@
       letter-spacing: -.06em;
       line-height: .88;
       color: var(--fg);
-      display: block;
+      display: inline-block;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    /* ── NOMBRE: máscara + barrido + imán ──────
+       1. Una barra de acento cruza y va destapando el nombre.
+       2. Al descubrirse, una ola de luz recorre las letras.
+       3. A partir de ahí las letras se apartan del cursor, de forma permanente. */
+    .hn-clip { display: inline-block; clip-path: inset(0 100% 0 0); }
+
+    #hero-name.go .hn-clip {
+      animation: hn-reveal 1.05s cubic-bezier(.76, 0, .24, 1) 200ms forwards;
+    }
+
+    /* Al acabar hay que anular la animación además del recorte: su fill "forwards"
+       mantendría el inset y cortaría las letras en cuanto el imán las desplace. */
+    #hero-name.done .hn-clip { animation: none; clip-path: none; }
+
+    @keyframes hn-reveal { to { clip-path: inset(0 0 0 0); } }
+
+    .hn-bar {
+      position: absolute;
+      top: 6%; bottom: 20%;
+      width: 3px; left: 0;
+      opacity: 0;
+      border-radius: 2px;
+      background: linear-gradient(180deg, #6366f1, #a855f7);
+      box-shadow: 0 0 18px rgba(139, 92, 246, .75);
+      pointer-events: none;
+    }
+
+    #hero-name.go .hn-bar {
+      animation: hn-bar-sweep 1.05s cubic-bezier(.76, 0, .24, 1) 200ms forwards;
+    }
+
+    @keyframes hn-bar-sweep {
+      0%   { opacity: 1; left: 0; }
+      90%  { opacity: 1; }
+      100% { opacity: 0; left: 100%; }
+    }
+
+    /* El degradado se pinta en cada letra, no en el contenedor: background-clip:text
+       solo recorta contra el texto del propio elemento y aquí el texto vive en los
+       spans. JS reparte la porción que le toca a cada una. */
+    .hn-ch {
+      display: inline-block;
+      background-image: linear-gradient(100deg,
+        var(--fg) 0%, var(--fg) 42%, #a5b4fc 62%, #a855f7 82%, #ec4899 100%);
+      background-repeat: no-repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+      will-change: transform;
+    }
+
+    #hero-name.sheen .hn-ch {
+      animation: hn-sheen 1.15s ease-out;
+      animation-delay: var(--i);
+    }
+
+    @keyframes hn-sheen {
+      0%, 100% { filter: brightness(1); }
+      45%      { filter: brightness(1.75) saturate(1.25); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hn-clip { clip-path: none; }
+      #hero-name.go .hn-clip,
+      #hero-name.go .hn-bar,
+      #hero-name.sheen .hn-ch { animation: none; }
+      .hn-bar { display: none; }
+      .hn-ch { transition: none; }
     }
 
     .hero-brand-sub {
@@ -1783,7 +1857,7 @@
       </div>
 
       <div class="hero-brand ha" style="--d:80ms">
-        <span class="hero-brand-name">Jerges</span>
+        <span class="hero-brand-name" id="hero-name"><span class="hn-bar" aria-hidden="true"></span><span class="hn-clip">Jerges</span></span>
         <span class="hero-brand-sub">Bello &nbsp;·&nbsp; <span data-i18n="hero.role">Software Architect &amp; AI Builder</span></span>
       </div>
 
@@ -3118,6 +3192,77 @@
       wrap.addEventListener('touchend', endDrag);
 
       wrap.style.cursor = 'grab';
+    })();
+
+    /* ── NOMBRE DEL HERO: máscara + barrido + imán ── */
+    (function heroName() {
+      const name = document.getElementById('hero-name');
+      const clip = name && name.querySelector('.hn-clip');
+      if (!clip) return;
+
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Parte la palabra en letras sin perderla para lectores de pantalla
+      const word = clip.textContent;
+      clip.setAttribute('aria-label', word);
+      clip.textContent = '';
+      const chars = [...word].map((c, i) => {
+        const s = document.createElement('span');
+        s.className = 'hn-ch';
+        s.textContent = c;
+        s.setAttribute('aria-hidden', 'true');
+        s.style.setProperty('--i', (i * 70) + 'ms');
+        clip.appendChild(s);
+        return s;
+      });
+
+      // Reparte el degradado para que las seis porciones formen uno continuo
+      function paintGradient() {
+        const base = clip.getBoundingClientRect();
+        if (!base.width) return;
+        chars.forEach(ch => {
+          const prev = ch.style.transform;
+          ch.style.transform = 'none';           // mide sin el desvío del imán
+          const r = ch.getBoundingClientRect();
+          ch.style.backgroundSize = base.width + 'px 100%';
+          ch.style.backgroundPosition = -(r.left - base.left) + 'px 0';
+          ch.style.transform = prev;
+        });
+      }
+
+      paintGradient();
+      addEventListener('resize', paintGradient);
+      // La fuente web cambia el ancho al cargar, así que hay que repintar
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(paintGradient);
+
+      if (reduced) { name.classList.add('done'); return; }
+
+      const REVEAL_END = 200 + 1050;             // retardo + duración de la máscara
+      name.classList.add('go');
+      setTimeout(() => name.classList.add('sheen'), REVEAL_END - 120);
+      setTimeout(() => name.classList.add('done'), REVEAL_END + 40);
+
+      // Imán: el radio acompaña al tamaño real de la tipografía
+      name.addEventListener('mousemove', e => {
+        if (!name.classList.contains('done')) return;
+        const radius = Math.max(220, parseFloat(getComputedStyle(name).fontSize) * 1.5);
+        chars.forEach(ch => {
+          const r = ch.getBoundingClientRect();
+          const dx = e.clientX - (r.left + r.width / 2);
+          const dy = e.clientY - (r.top + r.height / 2);
+          const dist = Math.hypot(dx, dy) || 1;
+          if (dist < radius) {
+            const f = (1 - dist / radius) * 26;
+            ch.style.transform = `translate(${-dx / dist * f}px, ${-dy / dist * f}px)`;
+          } else {
+            ch.style.transform = '';
+          }
+        });
+      });
+
+      name.addEventListener('mouseleave', () => {
+        chars.forEach(ch => { ch.style.transform = ''; });
+      });
     })();
 
     /* ── AUDIT FORM ── */
