@@ -271,10 +271,15 @@
       animation: hn-bar-sweep 1.05s cubic-bezier(.76, 0, .24, 1) 200ms forwards;
     }
 
+    /* La barra se apaga antes de alcanzar la última letra y sale un poco más
+       allá del texto: si llega encendida hasta el 100% se superpone al borde
+       derecho de la "s" y, sobre el rosa del degradado, se lee como un trazo
+       blanco. */
     @keyframes hn-bar-sweep {
-      0%   { opacity: 1; left: 0; }
-      90%  { opacity: 1; }
-      100% { opacity: 0; left: 100%; }
+      0%   { opacity: 0; left: 0; }
+      5%   { opacity: 1; }
+      72%  { opacity: 1; }
+      100% { opacity: 0; left: calc(100% + 12px); }
     }
 
     /* El degradado se pinta en cada letra, no en el contenedor: background-clip:text
@@ -282,6 +287,12 @@
        spans. JS reparte la porción que le toca a cada una. */
     .hn-ch {
       display: inline-block;
+      /* background-clip:text solo pinta dentro de la caja de relleno, y con
+         line-height .88 el descendente de la "g" queda fuera y no se dibuja.
+         El relleno agranda el área pintada; el margen negativo lo devuelve al
+         flujo, así la maquetación no cambia. */
+      padding: .22em 0 .3em;
+      margin: -.22em 0 -.3em;
       background-image: linear-gradient(100deg,
         var(--fg) 0%, var(--fg) 42%, #a5b4fc 62%, #a855f7 82%, #ec4899 100%);
       background-repeat: no-repeat;
